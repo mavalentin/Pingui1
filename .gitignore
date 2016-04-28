@@ -28,3 +28,6 @@
 *.app
 /nbproject/
 /Makefile
+/dist/
+/build/
+/.dep.inc
