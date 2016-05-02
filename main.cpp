@@ -24,7 +24,7 @@ int main(int argc, char** argv) {
     cout << "*********" << endl;
     cout << "*********" << endl;
     m.appendToFile("Another day with Pingui "+m.currentTime());    
-    
+       
     while(1)
 	{
         string command;
