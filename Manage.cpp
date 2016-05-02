@@ -59,7 +59,7 @@ string Manage::readFromFile() {
 	return result;
 }
 
-void Manage::createNewEvent(string type, string data){
+/*void Manage::createNewEvent(string type, string data){
     if (type == "meeting"){
         MeetingEvent event;
         //todo: extract from data and insert in event object variables
@@ -74,7 +74,7 @@ void Manage::createNewEvent(string type, string data){
     
     
     //write created object to file
-    //todo: extract data from object and put into dataToWrite
+    //todo: call serialize class
     string dataToWrite;
     appendToFile(dataToWrite);
-}
+}*/
