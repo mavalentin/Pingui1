@@ -22,7 +22,7 @@ public:
     string currentTime();
     void showAllEvents();
     string readFromFile();
-    void createNewEvent(string type);
+    void createNewEvent(string type, string data);
     
 private:
     list<Event> eventsList;

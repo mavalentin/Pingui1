@@ -59,17 +59,22 @@ string Manage::readFromFile() {
 	return result;
 }
 
-void Manage::createNewEvent(string type){
+void Manage::createNewEvent(string type, string data){
     if (type == "meeting"){
         MeetingEvent event;
+        //todo: extract from data and insert in event object variables
         
+        //insert event into the list
         eventsList.insert(event);
     }
     
-    if (type == "deadline"){
-        //create object
+    else if (type == "deadline"){
+        //todo: copy functionality from meeting
     }
     
-    appendToFile(//extracted data
-            );
+    
+    //write created object to file
+    //todo: extract data from object and put into dataToWrite
+    string dataToWrite;
+    appendToFile(dataToWrite);
 }
