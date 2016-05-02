@@ -31,4 +31,4 @@
 /dist/
 /build/
 /.dep.inc
-database.dat
+*.dat
