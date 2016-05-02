@@ -61,7 +61,9 @@ string Manage::readFromFile() {
 
 void Manage::createNewEvent(string type){
     if (type == "meeting"){
-        //create object
+        MeetingEvent event;
+        
+        eventsList.insert(event);
     }
     
     if (type == "deadline"){
