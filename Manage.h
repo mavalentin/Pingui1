@@ -25,7 +25,7 @@ public:
     void createNewEvent(string type, string data);
     
 private:
-    list<Event> eventsList;
+  //  list<Event> eventsList;
 };
 
 #endif	/* MANAGE_H */
