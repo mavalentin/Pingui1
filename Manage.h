@@ -11,6 +11,7 @@
 #include <fstream>
 #include <string>
 #include <ctime>
+#include <list>
 using namespace std;
 
 class Manage {
@@ -24,7 +25,7 @@ public:
     void createNewEvent(string type);
     
 private:
-
+    list<Event> eventsList;
 };
 
 #endif	/* MANAGE_H */
