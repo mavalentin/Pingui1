@@ -58,3 +58,16 @@ string Manage::readFromFile() {
 
 	return result;
 }
+
+void Manage::createNewEvent(string type){
+    if (type == "meeting"){
+        //create object
+    }
+    
+    if (type == "deadline"){
+        //create object
+    }
+    
+    appendToFile(//extracted data
+            );
+}
