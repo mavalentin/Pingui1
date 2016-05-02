@@ -27,7 +27,11 @@ int main(int argc, char** argv) {
     
     while(1)
 	{
-		l.listener();
+        string command;
+        getline(cin, command);
+		if(command == "exit")
+            return 0;
+//        l.listener();
 	}
 
     //DeadlineEvent d;
