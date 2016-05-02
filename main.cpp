@@ -29,10 +29,58 @@ int main(int argc, char** argv) {
 	{
         string command;
         getline(cin, command);
-		if(command == "exit")
-            return 0;
-//        l.listener();
-	}
+        if(command == "add")
+        {
+            cout << "You selected add" << endl;
+        }
+        else
+        {
+            if(command == "update")
+            {
+                cout << "You selected update" << endl;
+            }
+            else
+            {
+                if(command == "remove")
+                {
+                    cout << "You selected remove" << endl;
+                }
+                else
+                {
+                    if(command == "filter")
+                    {
+                        cout << "You selected filter" << endl;
+                    }
+                    else
+                    {
+                        if(command == "print")
+                        {
+                            cout << "You selected print" << endl;
+                        }
+                        else
+                        {
+                            if(command == "check")
+                            {
+                                cout << "You selected check" << endl;
+                            }
+                            else
+                            {
+                                if(command == "exit")
+                                {
+                                    cout << "***********************Goodbye***********************" << endl;
+                                    return 0;
+                                }
+                                else
+                                {
+
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
 
     //DeadlineEvent d;
     return 0;
