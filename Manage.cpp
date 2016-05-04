@@ -1,10 +1,3 @@
-/* 
- * File:   Manage.cpp
- * Author: Manuel
- * 
- * Created on 27. April 2016, 15:55
- */
-
 #include "Manage.h"
 
 Manage::Manage() {
@@ -59,13 +52,13 @@ string Manage::readFromFile() {
 	return result;
 }
 
-/*void Manage::createNewEvent(string type, string data){
+void Manage::createNewEvent(string type, string data){
     if (type == "meeting"){
         MeetingEvent event;
-        //todo: extract from data and insert in event object variables
+        //todo: extract from input data and insert in event object variables
         
-        //insert event into the list
-        eventsList.insert(event);
+        //totest: insert event into the list
+        eventsList.push_front(event);
     }
     
     else if (type == "deadline"){
@@ -77,4 +70,4 @@ string Manage::readFromFile() {
     //todo: call serialize class
     string dataToWrite;
     appendToFile(dataToWrite);
-}*/
+}

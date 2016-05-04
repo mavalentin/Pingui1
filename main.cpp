@@ -82,11 +82,5 @@ int main(int argc, char** argv) {
         }
     }
 
-    //DeadlineEvent d;
     return 0;
 }
-//sdfsdfsdfsdf
-
-//sdfsdfsdfsdf
-//ciao
-//rew

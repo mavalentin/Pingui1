@@ -1,10 +1,3 @@
-/* 
- * File:   Manage.h
- * Author: Manuel
- *
- * Created on 27. April 2016, 15:55
- */
-
 #ifndef MANAGE_H
 #define	MANAGE_H
 #include <iostream>
@@ -12,6 +5,8 @@
 #include <string>
 #include <ctime>
 #include <list>
+#include "Event.h"
+#include "MeetingEvent.h"
 using namespace std;
 
 class Manage {
@@ -25,7 +20,7 @@ public:
     void createNewEvent(string type, string data);
     
 private:
-  //  list<Event> eventsList;
+    list<MeetingEvent> eventsList; //must be a list of generic Events -> solve polymorphism problem for the list
 };
 
 #endif	/* MANAGE_H */
