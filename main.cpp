@@ -28,7 +28,15 @@ int main(int argc, char** argv) {
         if(command == "add" || command == "add event")
         {
             cout << "You selected add" << endl;
-            l.add();
+            cout << "Select if the event is a \"meeting\" or a \"deadline\"" << endl;
+            getline(cin, command);
+            if(command == "meeting")
+            	l.addMeetingEvent();
+            else
+            	if(command == "deadline")
+            		l.addDeadLineEvent();
+            	else
+            		cout <<"Invalid event type!\nExiting the add option" << endl;
         }
         else
         {
