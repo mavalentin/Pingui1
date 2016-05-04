@@ -23,9 +23,15 @@ Listen::~Listen()
 void Listen::addDeadLineEvent()
 {
 	cout << "You selected the deadline event" << endl;
-	string name, description;
+
+	string name, description, date;
+
 	cout << "Insert the name of the event " << endl;
 	getline(cin, name);
+	cout << "" << endl;
+
+	cout << "Insert the date of the event "<< endl;
+	getline(cin, date);
 	cout << "" << endl;
 
 	cout << "Insert the description of the event "<< endl;
@@ -36,9 +42,19 @@ void Listen::addDeadLineEvent()
 void Listen::addMeetingEvent()
 {
 	cout << "You selected the meeting event" << endl;
-	string name, description;
+
+	string name, description, startDate, endDate;
+	
 	cout << "Insert the name of the meeting " << endl;
 	getline(cin, name);
+	cout << "" << endl;
+
+	cout << "Insert the starting date and time of the meeting " << endl;
+	getline(cin, startDate);
+	cout << "" << endl;
+
+	cout << "Insert the ending date and time of the meeting " << endl;
+	getline(cin, endDate);
 	cout << "" << endl;
 
 	cout << "Insert the description of the meeting "<< endl;
