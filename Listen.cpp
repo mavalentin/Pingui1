@@ -8,16 +8,19 @@
 #include "Listen.h"
 #include "Manage.h"
 
-Listen::Listen() {
+Listen::Listen() 
+{
 }
 
-Listen::Listen(const Listen& orig) {
+Listen::Listen(const Listen& orig) 
+{
 }
 
 Listen::~Listen() {
 }
 
-void Listen::listener() {
+void Listen::listener() 
+{
     cout << "*********" << endl;
 	cout << "********* How can I help you?" << endl;
 	cout << "*********" << endl;
@@ -27,13 +30,15 @@ void Listen::listener() {
 	getline(cin, command);
 
         Manage ma;
-	if(command == "show all"){
-                ma.showAllEvents();
-        }
-	else if(command == "time"){
-		cout << "*********" << endl;
-		cout << "********* " + ma.currentTime() << endl;
-		cout << "*********" << endl;
-        }
+	if(command == "show all")
+	{
+        ma.showAllEvents();
+    }
+	else 
+		if(command == "time")
+		{
+			cout << "*********" << endl;
+			cout << "********* " + ma.currentTime() << endl;
+			cout << "*********" << endl;
+   	    }
 }
-

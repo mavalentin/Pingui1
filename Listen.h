@@ -10,15 +10,14 @@
 #include <iostream>
 using namespace std;
 
-class Listen {
-public:
-    Listen();
-    Listen(const Listen& orig);
-    virtual ~Listen();
-    void listener();
-private:
-
+class Listen 
+{
+	public:
+    	Listen();
+	    Listen(const Listen& orig);
+	    virtual ~Listen();
+	    void listener();
+	private:
 };
 
 #endif	/* LISTEN_H */
-
