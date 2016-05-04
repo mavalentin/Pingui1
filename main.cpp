@@ -65,15 +65,23 @@ int main(int argc, char** argv) {
                             }
                             else
                             {
-                                if(command == "exit")
-                                {
-                                    cout << "***********************Goodbye***********************" << endl;
-                                    return 0;
-                                }
-                                else
-                                {
-
-                                }
+                            	if(command == "help")
+                            	{
+                            		cout << "You selected help" << endl;
+                            	}
+                            	else
+                            	{
+                            		if(command == "exit")
+                               		{
+                                 	   cout << "***********************Goodbye***********************" << endl;
+                                	   return 0;
+                                	}
+                               		else
+	                                {
+	                                	cout << "***Invalid command!***\n***Digit help for the list of commands***" << endl;
+    	                            }
+                            	}
+                               
                             }
                         }
                     }
