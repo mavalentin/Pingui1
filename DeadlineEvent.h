@@ -16,6 +16,10 @@ class DeadlineEvent: public Event {
 public:
     DeadlineEvent();
     ~DeadlineEvent();
+
+    void setTime(string date1);
+    string getTime();
+
 private:
 	// Temporary we work with time as a string (without any format check)
 	string timex;

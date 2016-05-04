@@ -7,12 +7,8 @@
 
 #include "./Event.h"
 
-Event::Event(string l, string desc, string d) {
+Event::Event() {
         cout << "creating event object" << endl;
-		
-        description = desc;
-        label = l;
-        date = d;
 }
 
 Event::~Event() {

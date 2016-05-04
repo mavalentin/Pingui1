@@ -6,10 +6,8 @@
  */
 
 #include "DeadlineEvent.h"
-DeadlineEvent::DeadlineEvent(string t) {
+DeadlineEvent::DeadlineEvent() {
     cout << "creating deadlineevent object" << endl;
-
-    timex = t;
 }
 
 DeadlineEvent::~DeadlineEvent() {

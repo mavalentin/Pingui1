@@ -22,8 +22,8 @@ class Event {
         Event();
         ~Event();
     
-        void setDate(time_t date1);
-        time_t getDate();
+        void setDate(string date1);
+        string getDate();
         void setLabel(string label1);
         string getLabel();
         void setDesc(string desc1);
