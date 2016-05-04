@@ -18,54 +18,50 @@ using namespace std;
 int main(int argc, char** argv) {
     Manage m;
     Listen l;
-    cout << "****************************" << endl;
-    cout << "****************************" << endl;
-    cout << "********* Welcome to PINGUI!" << endl;
-    cout << "*********" << endl;
-    cout << "*********" << endl;
+    cout << "********* Welcome to PINGUI! **********" << endl;
     m.appendToFile("Another day with Pingui "+m.currentTime());    
        
     while(1)
 	{
         string command;
         getline(cin, command);
-        if(command == "add")
+        if(command == "add" || command == "add event")
         {
             cout << "You selected add" << endl;
         }
         else
         {
-            if(command == "update")
+            if(command == "update" || command == "update event")
             {
                 cout << "You selected update" << endl;
             }
             else
             {
-                if(command == "remove")
+                if(command == "remove" || command == "remove event")
                 {
                     cout << "You selected remove" << endl;
                 }
                 else
                 {
-                    if(command == "filter")
+                    if(command == "filter" || command == "filter event")
                     {
                         cout << "You selected filter" << endl;
                     }
                     else
                     {
-                        if(command == "print")
+                        if(command == "print" || command == "print event")
                         {
                             cout << "You selected print" << endl;
                         }
                         else
                         {
-                            if(command == "check")
+                            if(command == "check" || command == "check event")
                             {
                                 cout << "You selected check" << endl;
                             }
                             else
                             {
-                                if(command == "exit")
+                                if(command == "exit" || command == "kill pingui")
                                 {
                                     cout << "***********************Goodbye***********************" << endl;
                                     return 0;
