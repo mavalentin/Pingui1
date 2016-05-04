@@ -28,6 +28,7 @@ int main(int argc, char** argv) {
         if(command == "add" || command == "add event")
         {
             cout << "You selected add" << endl;
+            l.add();
         }
         else
         {
@@ -83,6 +84,7 @@ int main(int argc, char** argv) {
                 }
             }
         }
+        cout << "Waiting for another command from the user" << endl;
     }
 
     return 0;

@@ -16,7 +16,20 @@ Listen::Listen(const Listen& orig)
 {
 }
 
-Listen::~Listen() {
+Listen::~Listen() 
+{
+}
+
+void Listen::add()
+{
+	string name, description;
+	cout << "Insert the name of the event/meeting " << endl;
+	getline(cin, name);
+	cout << "" << endl;
+
+	cout << "Insert the description of the event/meeting "<< endl;
+	getline(cin, description);
+	cout << "" << endl;
 }
 
 void Listen::listener() 
@@ -29,7 +42,7 @@ void Listen::listener()
 	string command;
 	getline(cin, command);
 
-        Manage ma;
+    Manage ma;
 	if(command == "show all")
 	{
         ma.showAllEvents();

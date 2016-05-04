@@ -17,6 +17,7 @@ class Listen
 	    Listen(const Listen& orig);
 	    virtual ~Listen();
 	    void listener();
+	    void add();
 	private:
 };
 
