@@ -37,6 +37,8 @@ void Listen::addDeadLineEvent()
 	cout << "Insert the description of the event "<< endl;
 	getline(cin, description);
 	cout << "" << endl;
+
+	// Make a call to the Manage.cpp file that formats the string to add and pass it to the method
 }
 
 void Listen::addMeetingEvent()
