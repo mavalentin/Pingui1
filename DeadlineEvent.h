@@ -17,7 +17,8 @@ public:
     DeadlineEvent();
     ~DeadlineEvent();
 private:
-
+	// Temporary we work with time as a string (without any format check)
+	string timex;
 };
 
 #endif	/* DEADLINEEVENT_H */

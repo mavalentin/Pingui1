@@ -14,8 +14,10 @@ using namespace std;
 class Event {
     private:
         string label, description;
-	time_t date;
-    
+	//time_t date;
+        // Temporary we work with time as a string (without any check)
+        string date;
+
     public:
         Event();
         ~Event();

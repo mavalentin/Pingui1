@@ -7,8 +7,12 @@
 
 #include "./Event.h"
 
-Event::Event() {
+Event::Event(string l, string desc, string d) {
         cout << "creating event object" << endl;
+		
+        description = desc;
+        label = l;
+        date = d;
 }
 
 Event::~Event() {
@@ -16,10 +20,10 @@ Event::~Event() {
 }
 
 
-void Event::setDate(time_t date1) {
+void Event::setDate(string date1) {
         date=date1;
 }
-time_t Event::getDate() {
+string Event::getDate() {
         return date;
 }
 

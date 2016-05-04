@@ -10,13 +10,15 @@
 
 using namespace std;
 
-class MeetingEvent {
+class MeetingEvent: public Event {
 public:
     MeetingEvent();
     MeetingEvent(const MeetingEvent& orig);
     virtual ~MeetingEvent();
 private:
-
+	// Temporary we work with date as string (without any check)
+	string endDate;
+	string location;
 };
 
 #endif	/* MEETINGEVENT_H */

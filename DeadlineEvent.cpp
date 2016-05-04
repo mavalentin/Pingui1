@@ -6,13 +6,19 @@
  */
 
 #include "DeadlineEvent.h"
-DeadlineEvent::DeadlineEvent() {
+DeadlineEvent::DeadlineEvent(string t) {
     cout << "creating deadlineevent object" << endl;
+
+    timex = t;
 }
-
-
 
 DeadlineEvent::~DeadlineEvent() {
     cout << "destroying deadlineevent object" << endl;
 }
 
+void DeadlineEvent::setTime(string t) {
+        timex=t;
+}
+string DeadlineEvent::getTime() {
+        return timex;
+}
