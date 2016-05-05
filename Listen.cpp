@@ -29,14 +29,23 @@ void Listen::addDeadLineEvent()
 	cout << "Insert the name of the event " << endl;
 	getline(cin, name);
 	cout << "" << endl;
+// If user inputs "abort", returns to the main menu
+	if(name == "abort")
+		return ;
 
 	cout << "Insert the date of the event "<< endl;
 	getline(cin, date);
 	cout << "" << endl;
+// If user inputs "abort", returns to the main menu
+	if(date == "abort")
+		return ;
 
 	cout << "Insert the description of the event "<< endl;
 	getline(cin, description);
 	cout << "" << endl;
+// If user inputs "abort", returns to the main menu
+	if(description == "abort")
+		return ;
 
 	// Make a call to the Manage.cpp file that formats the string to add and pass it to the method
 }
@@ -50,18 +59,30 @@ void Listen::addMeetingEvent()
 	cout << "Insert the name of the meeting " << endl;
 	getline(cin, name);
 	cout << "" << endl;
+// If user inputs "abort", returns to the main menu
+	if(name == "abort")
+		return ;
 
 	cout << "Insert the starting date and time of the meeting " << endl;
 	getline(cin, startDate);
 	cout << "" << endl;
+// If user inputs "abort", returns to the main menu
+	if(startDate == "abort")
+		return ;
 
 	cout << "Insert the ending date and time of the meeting " << endl;
 	getline(cin, endDate);
 	cout << "" << endl;
+// If user inputs "abort", returns to the main menu
+	if(endDate == "abort")
+		return ;
 
 	cout << "Insert the description of the meeting "<< endl;
 	getline(cin, description);
 	cout << "" << endl;
+// If user inputs "abort", returns to the main menu
+	if(description == "abort")
+		return ;
 }
 
 void Listen::listener() 
