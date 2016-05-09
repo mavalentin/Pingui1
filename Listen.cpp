@@ -50,6 +50,22 @@ string Listen::listenLocation(string type){
     getline(cin, location);
     return location;
 }
+
+void Listen::removeAll()
+{
+    // Remove all the data stored in the database file
+    cout << "You are about to remove all the saved events" << endl;
+    cout << "Do you really want to continue? [Y/n]" << endl;
+    string command;
+    getline(cin, command);
+    if(command == "Y" || command == "y")
+    {
+        cout << "Selected remove all" << endl;
+        m.emptyFile();
+    }
+    else
+        cout << "Aborted remove all" << endl;
+}
     
     
     

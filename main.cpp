@@ -52,28 +52,42 @@ int main(int argc, char** argv) {
                         }
                         else
                         {
-                            if(command == "check" || command == "check event")
+                            if(command == "remove all")
                             {
-                                cout << "You selected check" << endl;
+                                l.removeAll(); 
                             }
                             else
                             {
-                            	if(command == "help")
-                            	{
-                            		cout << "You selected help" << endl;
-                            	}
-                            	else
-                            	{
-                            		if(command == "exit" || command == "kill pingui")
-                               		{
-                                 	   cout << "***********************Goodbye***********************" << endl;
-                                	   return 0;
-                                	}
-                               		else
-	                                {
-	                                	cout << "***Invalid command!***\n***Digit help for the list of commands***" << endl;
-    	                            }
-                            	}
+                                if(command == "show all")
+                                {
+                                    m.showAllEvents(); 
+                                }
+                                else
+                                {
+                                    if(command == "check" || command == "check event")
+                                    {
+                                        cout << "You selected check" << endl;
+                                    }
+                                    else
+                                    {
+                                    	if(command == "help")
+                                    	{
+                                    		cout << "You selected help" << endl;
+                                    	}
+                                    	else
+                                    	{
+                                    		if(command == "exit" || command == "kill pingui")
+                                       		{
+                                         	   cout << "***********************Goodbye***********************" << endl;
+                                        	   return 0;
+                                        	}
+                                       		else
+        	                                {
+        	                                	cout << "***Invalid command!***\n***Digit help for the list of commands***" << endl;
+            	                            }
+                                    	}
+                                    }
+                                }
                             }
                         }
                     }

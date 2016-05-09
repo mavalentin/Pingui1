@@ -19,6 +19,20 @@ void Manage::appendToFile(string data){
     //Closes the file
     file.close();
 }
+
+void Manage::emptyFile(){
+    //Creates a filestream
+    fstream file;
+    //Creates and opens the file (override mode)
+    file.open("database.dat", fstream::out);
+    //Writes empty string on the file
+    file << "" << endl;
+    //Closes the file
+    file.close();
+
+    cout << "All events removed" << endl;
+}
+
 string Manage::currentTime(){
     time_t t = time(NULL);
     return asctime(localtime(&t));
@@ -26,11 +40,11 @@ string Manage::currentTime(){
 
 void Manage::showAllEvents() {
     cout << "*********" << endl;
-	cout << readFromFile() << endl;	
+	cout << readAllFromFile() << endl;	
 	cout << "*********" << endl;
 }
 
-string Manage::readFromFile() {
+string Manage::readAllFromFile() {
     //Reader for the file
 	ifstream file;
 	//Open the file

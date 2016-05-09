@@ -15,9 +15,10 @@ public:
     Manage();
     ~Manage();
     void appendToFile(string data);
+    void emptyFile();
     string currentTime();
     void showAllEvents();
-    string readFromFile();
+    string readAllFromFile();
     void createNewEvent(string type);
     
 private:

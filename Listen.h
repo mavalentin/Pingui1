@@ -14,6 +14,7 @@ class Listen
             string listenEndDate(string type);
             string listenDescription(string type);
             string listenLocation(string type);
+        void removeAll();
 	private:
 };
 
