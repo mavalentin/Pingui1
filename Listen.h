@@ -1,10 +1,3 @@
-/* 
- * File:   Listen.h
- * Author: Manuel
- *
- * Created on 27. April 2016, 16:02
- */
-
 #ifndef LISTEN_H
 #define	LISTEN_H
 #include <iostream>
@@ -16,9 +9,11 @@ class Listen
     	Listen();
 	    Listen(const Listen& orig);
 	    virtual ~Listen();
-	    void listener();
-	    void addMeetingEvent();
-	    void addDeadLineEvent();
+	    string listenLabel(string type);
+            string listenStartDate(string type);
+            string listenEndDate(string type);
+            string listenDescription(string type);
+            string listenLocation(string type);
 	private:
 };
 

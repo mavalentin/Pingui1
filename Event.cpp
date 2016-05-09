@@ -1,10 +1,3 @@
-/* 
- * File:   Event.cpp
- * Author: Manuel
- * 
- * Created on 27. April 2016, 14:42
- */
-
 #include "./Event.h"
 
 Event::Event() {
@@ -16,11 +9,11 @@ Event::~Event() {
 }
 
 
-void Event::setDate(string date1) {
-        date=date1;
+void Event::setStartDate(string date1) {
+        startDate=date1;
 }
-string Event::getDate() {
-        return date;
+string Event::getStartDate() {
+        return startDate;
 }
 
 void Event::setLabel(string label1) {

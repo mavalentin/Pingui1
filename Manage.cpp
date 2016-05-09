@@ -1,4 +1,7 @@
 #include "Manage.h"
+#include "Listen.h"
+
+Listen l;
 
 Manage::Manage() {
 }
@@ -53,72 +56,108 @@ string Manage::readFromFile() {
 }
 
 void Manage::createNewEvent(string type){
-    if (type == "meeting"){
-        MeetingEvent event;
-        string name, description, startDate, endDate;
-        
-        cout << "You selected the meeting event" << endl;
-        
-        cout << "Insert the name of the meeting " << endl;
-	getline(cin, name);
-	cout << "" << endl;
-// If user inputs "abort", returns to the main menu
-	if(name == "abort")
-		return ;
+        if (type == "meeting"){
+            MeetingEvent event;
+            string name, description, startDate, endDate, location;
 
-	cout << "Insert the starting date and time of the meeting " << endl;
-	getline(cin, startDate);
-	cout << "" << endl;
-// If user inputs "abort", returns to the main menu
-	if(startDate == "abort")
-		return ;
+            cout << "You selected the meeting event" << endl;
 
-	cout << "Insert the ending date and time of the meeting " << endl;
-	getline(cin, endDate);
-	cout << "" << endl;
-// If user inputs "abort", returns to the main menu
-	if(endDate == "abort")
-		return ;
+            //NAME
+            name=l.listenLabel(type);
+    // If user inputs "abort", returns to the main menu
+            if(name == "abort")
+                    return ;
+            event.setLabel(name);
+            cout << "" << endl;
 
-	cout << "Insert the description of the meeting "<< endl;
-	getline(cin, description);
-	cout << "" << endl;
-// If user inputs "abort", returns to the main menu
-	if(description == "abort")
-		return ;
-        //todo: extract from input data and insert in event object variables
-        
-        //totest: insert event into the list
-        eventsList.push_front(event);
+            //START DATE
+            startDate=l.listenStartDate(type);
+    // If user inputs "abort", returns to the main menu
+            if(startDate == "abort")
+                    return ;
+            //get and set start date
+            event.setStartDate(startDate);
+            cout << "" << endl;
+
+            //END DATE
+            endDate=l.listenEndDate(type);
+    // If user inputs "abort", returns to the main menu
+            if(endDate == "abort")
+                    return ;
+            //get and set end date
+            event.setEndDate(endDate);
+            cout << "" << endl;
+
+            //DESCRIPTION
+            description=l.listenDescription(type);
+    // If user inputs "abort", returns to the main menu
+            if(description == "abort")
+                    return ;
+            //get and set description
+            event.setDesc(description);
+            cout << "" << endl;
+
+            //LOCATION
+            location=l.listenLocation(type);
+    // If user inputs "abort", returns to the main menu
+            if(location == "abort")
+                    return ;
+            //get and set location
+            event.setLocation(location);
+            cout << "" << endl;
+
+
+            //insert event into the list
+            eventsList.push_back(&event);
+            
+            //TODO: call serialize and appendToFile
+            
+            
     }
     
+    
+    
+    
+    
     else if (type == "deadline"){
-        //todo: copy functionality from meeting
-        
-        cout << "You selected the deadline event" << endl;
+            DeadlineEvent event;
+            cout << "You selected the deadline event" << endl;
 
-	string name, description, date;
+            string name, description, date;
 
-	cout << "Insert the name of the event " << endl;
-	getline(cin, name);
-	cout << "" << endl;
-// If user inputs "abort", returns to the main menu
-	if(name == "abort")
-		return ;
+            //NAME
+            name=l.listenLabel(type);
+    // If user inputs "abort", returns to the main menu
+            if(name == "abort")
+                    return ;
+            event.setLabel(name);
+            cout << "" << endl;
 
-	cout << "Insert the date of the event "<< endl;
-	getline(cin, date);
-	cout << "" << endl;
-// If user inputs "abort", returns to the main menu
-	if(date == "abort")
-		return ;
+            //DATE
+            date=l.listenStartDate(type);
+    // If user inputs "abort", returns to the main menu
+            if(date == "abort")
+                    return ;
+            //get and set start date
+            event.setStartDate(date);
+            cout << "" << endl;
 
-	cout << "Insert the description of the event "<< endl;
-	getline(cin, description);
-	cout << "" << endl;
-// If user inputs "abort", returns to the main menu
-	if(description == "abort")
-		return ;
+            //DESCRIPTION
+            description=l.listenDescription(type);
+    // If user inputs "abort", returns to the main menu
+            if(description == "abort")
+                    return ;
+            //get and set description
+            event.setDesc(description);
+            cout << "" << endl;
+            
+            
+            //insert event into the list
+            eventsList.push_back(&event);
+            
+            //TODO: call serialize and appendToFile
+            
+            
 
 	// Make a call to the Manage.cpp file that formats the string to add and pass it to the method
     }
@@ -128,6 +167,8 @@ void Manage::createNewEvent(string type){
     
     //write created object to file
     //todo: call serialize class
-    string dataToWrite;
-    appendToFile(dataToWrite);
+        
+        
+    //string dataToWrite;
+    //appendToFile(dataToWrite);
 }

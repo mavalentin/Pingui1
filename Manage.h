@@ -4,9 +4,10 @@
 #include <fstream>
 #include <string>
 #include <ctime>
-#include <list>
+#include <vector>
 #include "Event.h"
 #include "MeetingEvent.h"
+#include "DeadlineEvent.h"
 using namespace std;
 
 class Manage {
@@ -20,7 +21,7 @@ public:
     void createNewEvent(string type);
     
 private:
-    list<MeetingEvent> eventsList; //must be a list of generic Events -> solve polymorphism problem for the list
+    vector<Event*> eventsList;
 };
 
 #endif	/* MANAGE_H */
