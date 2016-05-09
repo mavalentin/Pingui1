@@ -22,7 +22,7 @@ public:
     void createNewEvent(string type);
     
 private:
-    vector<Event*> eventsList;
+    vector<Event*> eventsList; //access objects with * and objectvariables with ->
 };
 
 #endif	/* MANAGE_H */

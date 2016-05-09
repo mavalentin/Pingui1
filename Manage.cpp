@@ -126,7 +126,6 @@ void Manage::createNewEvent(string type){
             
             //TODO: call serialize and appendToFile
             
-            
     }
     
     
