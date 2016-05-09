@@ -1,10 +1,3 @@
-/* 
- * File:   main.cpp
- * Author: Manuel
- *
- * Created on 27. April 2016, 14:41
- */
-
 #include <iostream>
 #include "DeadlineEvent.h"
 #include "Manage.h"
@@ -30,13 +23,7 @@ int main(int argc, char** argv) {
             cout << "You selected add" << endl;
             cout << "Select if the event is a \"meeting\" or a \"deadline\"" << endl;
             getline(cin, command);
-            if(command == "meeting")
-            	l.addMeetingEvent();
-            else
-            	if(command == "deadline")
-            		l.addDeadLineEvent();
-            	else
-            		cout <<"Invalid event type!\nExiting the add option" << endl;
+            m.createNewEvent(command);
         }
         else
         {
