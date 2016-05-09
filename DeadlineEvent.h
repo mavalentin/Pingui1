@@ -17,12 +17,15 @@ public:
     DeadlineEvent();
     ~DeadlineEvent();
 
-    void setTime(string date1);
-    string getTime();
+    //For now we have the time already together with the date
+    
+    
+    //void setTime(string date1);
+    //string getTime();
 
 private:
 	// Temporary we work with time as a string (without any format check)
-	string timex;
+	//string timex;
 };
 
 #endif	/* DEADLINEEVENT_H */
