@@ -52,9 +52,40 @@ string Manage::readFromFile() {
 	return result;
 }
 
-void Manage::createNewEvent(string type, string data){
+void Manage::createNewEvent(string type){
     if (type == "meeting"){
         MeetingEvent event;
+        string name, description, startDate, endDate;
+        
+        cout << "You selected the meeting event" << endl;
+        
+        cout << "Insert the name of the meeting " << endl;
+	getline(cin, name);
+	cout << "" << endl;
+// If user inputs "abort", returns to the main menu
+	if(name == "abort")
+		return ;
+
+	cout << "Insert the starting date and time of the meeting " << endl;
+	getline(cin, startDate);
+	cout << "" << endl;
+// If user inputs "abort", returns to the main menu
+	if(startDate == "abort")
+		return ;
+
+	cout << "Insert the ending date and time of the meeting " << endl;
+	getline(cin, endDate);
+	cout << "" << endl;
+// If user inputs "abort", returns to the main menu
+	if(endDate == "abort")
+		return ;
+
+	cout << "Insert the description of the meeting "<< endl;
+	getline(cin, description);
+	cout << "" << endl;
+// If user inputs "abort", returns to the main menu
+	if(description == "abort")
+		return ;
         //todo: extract from input data and insert in event object variables
         
         //totest: insert event into the list
@@ -63,7 +94,36 @@ void Manage::createNewEvent(string type, string data){
     
     else if (type == "deadline"){
         //todo: copy functionality from meeting
+        
+        cout << "You selected the deadline event" << endl;
+
+	string name, description, date;
+
+	cout << "Insert the name of the event " << endl;
+	getline(cin, name);
+	cout << "" << endl;
+// If user inputs "abort", returns to the main menu
+	if(name == "abort")
+		return ;
+
+	cout << "Insert the date of the event "<< endl;
+	getline(cin, date);
+	cout << "" << endl;
+// If user inputs "abort", returns to the main menu
+	if(date == "abort")
+		return ;
+
+	cout << "Insert the description of the event "<< endl;
+	getline(cin, description);
+	cout << "" << endl;
+// If user inputs "abort", returns to the main menu
+	if(description == "abort")
+		return ;
+
+	// Make a call to the Manage.cpp file that formats the string to add and pass it to the method
     }
+    else
+        cout <<"Invalid event type!\nExiting the add option" << endl;
     
     
     //write created object to file

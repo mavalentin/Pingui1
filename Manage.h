@@ -17,7 +17,7 @@ public:
     string currentTime();
     void showAllEvents();
     string readFromFile();
-    void createNewEvent(string type, string data);
+    void createNewEvent(string type);
     
 private:
     list<MeetingEvent> eventsList; //must be a list of generic Events -> solve polymorphism problem for the list
