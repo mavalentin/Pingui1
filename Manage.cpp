@@ -10,6 +10,8 @@
 
 Listen l;
 
+
+
 Manage::Manage() {
 }
 
@@ -76,7 +78,15 @@ string Manage::readAllFromFile() {
 	return result;
 }
 
+string Manage::constructDataString(Event event){ ////under construction
+    string dataString;
+    dataString="\n/|\\MEETING/|\\\n"+event.getLabel()+"\n"+event.getDesc();
+}
+
+
 void Manage::createNewEvent(string type){
+    string dataToWrite;
+    
         if (type == "meeting"){
             MeetingEvent event;
             string name, description, startDate, endDate, location;
@@ -188,7 +198,5 @@ void Manage::createNewEvent(string type){
     //write created object to file
     //todo: call serialize class
         
-        
-    //string dataToWrite;
-    //appendToFile(dataToWrite);
+    
 }

@@ -26,6 +26,7 @@ public:
     string currentTime();
     void showAllEvents();
     string readAllFromFile();
+    string constructDataString(Event event);
     void createNewEvent(string type);
     
 private:
