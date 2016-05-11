@@ -1,3 +1,10 @@
+/*	
+ *	Free University of Bolzano, Software Engineering 2015/2016
+ *	Authors: Marco Mondini, Luca Sabiucciu, Manuel Valentin
+ * 	Project name: Pingui
+ *	Goal: Simple command based todo-list, for saving, removing and updating appointments 
+ */
+
 #include <iostream>
 #include "DeadlineEvent.h"
 #include "Manage.h"
@@ -5,9 +12,6 @@
 
 using namespace std;
 
-/*
- * 
- */
 int main(int argc, char** argv) {
     Manage m;
     Listen l;
@@ -96,7 +100,5 @@ int main(int argc, char** argv) {
         }
         cout << "Waiting for another command from the user" << endl;
     }
-    
-
     return 0;
 }

@@ -1,8 +1,8 @@
-/* 
- * File:   deadlineEvent.h
- * Author: Manuel
- *
- * Created on 27. April 2016, 15:04
+/*	
+ *	Free University of Bolzano, Software Engineering 2015/2016
+ *	Authors: Marco Mondini, Luca Sabiucciu, Manuel Valentin
+ * 	Project name: Pingui
+ *	Goal: Simple command based todo-list, for saving, removing and updating appointments 
  */
 
 #ifndef DEADLINEEVENT_H
