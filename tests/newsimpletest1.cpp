@@ -23,6 +23,8 @@ void testListenLabel() {
     string type;
     Listen listen;
     type="meeting";
+    
+    //not working because this function is calling user input (User input needs to be faked)
     string result = listen.listenLabel(type);
     if (true /*check result*/) {
         std::cout << "%TEST_FAILED% time=0 testname=testListenLabel (newsimpletest1) message=error message sample" << std::endl;
