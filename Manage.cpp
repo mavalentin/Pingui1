@@ -24,7 +24,7 @@ void Manage::appendToFile(string data){
     //Creates and opens the file
     file.open("database.dat", fstream::app|fstream::out);
     //Writes something on the file
-    file << data << endl;
+    file << data;
     //Closes the file
     file.close();
 }
@@ -49,44 +49,126 @@ string Manage::currentTime(){
 
 void Manage::showAllEvents() {
     cout << "*********" << endl;
-	cout << readAllFromFile() << endl;	
+	//cout << readAllFromFile() << endl; //here we will need to read from the vectorlist instead of database	
 	cout << "*********" << endl;
 }
 
-string Manage::readAllFromFile() {
+void Manage::readAllFromFile() {
     //Reader for the file
 	ifstream file;
 	//Open the file
 	file.open("database.dat", fstream::in);
 	string line;
 	string result;
+        MeetingEvent *tempmeeting = new MeetingEvent;
+        DeadlineEvent *tempdeadline = new DeadlineEvent;
+        
+        
+        //DELETION OF OLD OBJECTS
+        //empty the vecor list and recreate events from read file
+            //iterate through list, deallocate memory of dynamic objects
+        vector<Event*>::iterator it;
+        for (it=eventsList.begin(); it < eventsList.end(); it++){
+            delete *it;
+        }
+        eventsList.clear();
+        
+        //RECREATION OF OBJECTS
 	//Checks if file has been opened
 	if(file.is_open())
 	{
-		//Print the content of the file
-		while(getline(file, line))
-		{
-			result += line;
-			result += '\n';
-		}
-		//Closes the file
+            //int current_line=1;
+            
+            //getline(file, line);
+                
+                while(getline(file, line)){
+		
+                    
+                    //if meeting found, get its 6 pieces of data
+                    if(line.find("/|\\MEETING/|\\")!=string::npos){
+                        for (int index=1; index<=6; index++){
+                            getline(file, line);
+                            
+                            switch (index)
+                            {
+                                case (1):
+                                    tempmeeting->setID(atoi(line.c_str()));
+                                    break;
+                                    
+                                case (2):
+                                    tempmeeting->setLabel(line);
+                                    break;
+                                    
+                                case (3):
+                                    tempmeeting->setDesc(line);
+                                    break;
+                                    
+                                case (4):
+                                    tempmeeting->setStartDate(line);
+                                    break;
+                                    
+                                case (5):
+                                    tempmeeting->setEndDate(line);
+                                    break;
+                                    
+                                case (6):
+                                    tempmeeting->setLocation(line);
+                            }
+                        }
+                        MeetingEvent *newevent = tempmeeting;
+                        tempmeeting = new MeetingEvent;
+                        eventsList.push_back(newevent);
+                    }
+                    
+                    //if deadline found, get its 4 pieces of data
+                    else if(line.find("/|\\DEADLINE/|\\")!=string::npos){
+                        for (int index=1; index<=4; index++){
+                            getline(file, line);
+                            
+                            switch (index)
+                            {
+                                case (1):
+                                    tempdeadline->setID(atoi(line.c_str()));
+                                    break;
+                                    
+                                case (2):
+                                    tempdeadline->setLabel(line);
+                                    break;
+                                    
+                                case (3):
+                                    tempdeadline->setDesc(line);
+                                    break;
+                                    
+                                case (4):
+                                    tempdeadline->setStartDate(line);
+                                    break;
+                                    
+                            }
+                        }
+                        DeadlineEvent *newevent = tempdeadline;
+                        tempdeadline=new DeadlineEvent;
+                        eventsList.push_back(newevent);
+                    }
+                
+            }
+            //Closes the file
 		file.close();
 	}
 	else
 		cout << "Impossible to open the file" << endl;
 
-	return result;
+        cout << "We found " << eventsList.size() << " events in database and saved them to vector list." << endl;
 }
 
 template<typename T> string Manage::constructDataString(T* event){
     string dataString;
     stringstream sstm;
-    sstm << event->getID() << "\n"+event->getLabel()+"\n"+event->getDesc()+"\n"+event->getStartDate();
+    sstm << event->getID() << "\n"+event->getLabel()+"\n"+event->getDesc()+"\n"+event->getStartDate()+"\n";
     dataString=sstm.str();
     
     //add meeting-specific data to string
     if (MeetingEvent* m = dynamic_cast<MeetingEvent*>(event)){
-        dataString+="\n"+m->getEndDate()+"\n"+m->getLocation();
+        dataString+=m->getEndDate()+"\n"+m->getLocation()+"\n";
         string temp=dataString;
         dataString="/|\\MEETING/|\\\n"+temp;
     }
@@ -113,58 +195,89 @@ void Manage::setEventID(Event *e){
 }
 
 
+
+void Manage::listenToData(string type){
+    if (type=="meeting"){
+        //NAME
+            name=l.listenLabel(type);
+            cout << "" << endl;
+            // If user inputs "abort", returns to the main menu
+            if(name == "abort")
+                    return ;
+        //START DATE
+            startDate=l.listenStartDate(type);
+            cout << "" << endl;
+            // If user inputs "abort", returns to the main menu
+            if(startDate == "abort")
+                    return ;
+        //END DATE
+            endDate=l.listenEndDate(type); 
+            cout << "" << endl;
+            // If user inputs "abort", returns to the main menu
+            if(endDate == "abort")
+                    return ;
+        //DESCRIPTION
+            description=l.listenDescription(type);
+            cout << "" << endl;
+            // If user inputs "abort", returns to the main menu
+            if(description == "abort")
+                    return ;
+        //LOCATION
+            location=l.listenLocation(type);  
+            cout << "" << endl;
+            // If user inputs "abort", returns to the main menu
+            if(location == "abort")
+                    return ;
+            
+          
+    }
+    else if (type=="deadline"){
+        //NAME
+            name=l.listenLabel(type);
+            cout << "" << endl;
+            // If user inputs "abort", returns to the main menu
+            if(name == "abort")
+                    return ;
+        //START DATE
+            startDate=l.listenStartDate(type);
+            cout << "" << endl;
+            // If user inputs "abort", returns to the main menu
+            if(startDate == "abort")
+                    return ;
+        //DESCRIPTION
+            description=l.listenDescription(type);
+            cout << "" << endl;
+            // If user inputs "abort", returns to the main menu
+            if(description == "abort")
+                    return ;
+            
+            
+    }
+}
+
+
 void Manage::createNewEvent(string type){
     string dataToWrite;
     
         if (type == "meeting"){
             MeetingEvent *event = new MeetingEvent;
-            string name, description, startDate, endDate, location;
 
             cout << "You selected the meeting event" << endl;
 
-            //NAME
-            name=l.listenLabel(type);
-    // If user inputs "abort", returns to the main menu
-            if(name == "abort")
+            //call listening function
+            listenToData(type);
+            
+            
+            // If user inputs "abort", returns to the main menu
+            if(name == "abort" | startDate == "abort" | endDate == "abort" | description == "abort" | location == "abort")
                     return ;
+            
+            //set event variables
             event->setLabel(name);
-            cout << "" << endl;
-
-            //START DATE
-            startDate=l.listenStartDate(type);
-    // If user inputs "abort", returns to the main menu
-            if(startDate == "abort")
-                    return ;
-            //get and set start date
             event->setStartDate(startDate);
-            cout << "" << endl;
-
-            //END DATE
-            endDate=l.listenEndDate(type);
-    // If user inputs "abort", returns to the main menu
-            if(endDate == "abort")
-                    return ;
-            //get and set end date
             event->setEndDate(endDate);
-            cout << "" << endl;
-
-            //DESCRIPTION
-            description=l.listenDescription(type);
-    // If user inputs "abort", returns to the main menu
-            if(description == "abort")
-                    return ;
-            //get and set description
             event->setDesc(description);
-            cout << "" << endl;
-
-            //LOCATION
-            location=l.listenLocation(type);
-    // If user inputs "abort", returns to the main menu
-            if(location == "abort")
-                    return ;
-            //get and set location
             event->setLocation(location);
-            cout << "" << endl;
 
             //ID
             setEventID(event);
@@ -183,36 +296,22 @@ void Manage::createNewEvent(string type){
             DeadlineEvent *event=new DeadlineEvent;
             cout << "You selected the deadline event" << endl;
 
-            string name, description, date;
-
-            //NAME
-            name=l.listenLabel(type);
-    // If user inputs "abort", returns to the main menu
-            if(name == "abort")
-                    return ;
-            event->setLabel(name);
-            cout << "" << endl;
-
-            //DATE
-            date=l.listenStartDate(type);
-    // If user inputs "abort", returns to the main menu
-            if(date == "abort")
-                    return ;
-            //get and set start date
-            event->setStartDate(date);
-            cout << "" << endl;
-
-            //DESCRIPTION
-            description=l.listenDescription(type);
-    // If user inputs "abort", returns to the main menu
-            if(description == "abort")
-                    return ;
-            //get and set description
-            event->setDesc(description);
-            cout << "" << endl;
+            //call listening function
+            listenToData(type);
             
+            
+            // If user inputs "abort", returns to the main menu
+            if(name == "abort" | startDate == "abort" | description == "abort")
+                    return ;
+            
+            //set event variables
+            event->setLabel(name);
+            event->setStartDate(startDate);
+            event->setDesc(description);
+
             //ID
             setEventID(event);
+            
             
             //insert event into the list
             eventsList.push_back(event);

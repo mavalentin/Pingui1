@@ -16,7 +16,9 @@ int main(int argc, char** argv) {
     Manage m;
     Listen l;
     cout << "********* Welcome to PINGUI! **********" << endl;
-    m.appendToFile("Another day with Pingui "+m.currentTime());    
+    //m.appendToFile("Another day with Pingui "+m.currentTime());
+
+    m.readAllFromFile();
     
     //initialize listening
     while(1)

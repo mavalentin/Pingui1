@@ -71,7 +71,7 @@ string Listen::listenLocation(string type){
     string location;
     cout << "Insert the location of the "+type << endl;
     getline(cin, location);
-       
+    
     return location;
 }
 
