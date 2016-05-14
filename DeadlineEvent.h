@@ -15,7 +15,7 @@ using namespace std;
 class DeadlineEvent: public Event {
 public:
     DeadlineEvent();
-    ~DeadlineEvent();
+    virtual ~DeadlineEvent();
 
     //For now we have the time already together with the date
     
