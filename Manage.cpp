@@ -60,8 +60,8 @@ void Manage::readAllFromFile() {
 	file.open("database.dat", fstream::in);
 	string line;
 	string result;
-        MeetingEvent *tempmeeting = new MeetingEvent;
-        DeadlineEvent *tempdeadline = new DeadlineEvent;
+        MeetingEvent *tempmeeting;
+        DeadlineEvent *tempdeadline;
         
         
         //DELETION OF OLD OBJECTS
@@ -86,6 +86,7 @@ void Manage::readAllFromFile() {
                     
                     //if meeting found, get its 6 pieces of data
                     if(line.find("/|\\MEETING/|\\")!=string::npos){
+                        tempmeeting = new MeetingEvent;
                         for (int index=1; index<=6; index++){
                             getline(file, line);
                             
@@ -116,12 +117,12 @@ void Manage::readAllFromFile() {
                             }
                         }
                         MeetingEvent *newevent = tempmeeting;
-                        tempmeeting = new MeetingEvent;
                         eventsList.push_back(newevent);
                     }
                     
                     //if deadline found, get its 4 pieces of data
                     else if(line.find("/|\\DEADLINE/|\\")!=string::npos){
+                        tempdeadline=new DeadlineEvent;
                         for (int index=1; index<=4; index++){
                             getline(file, line);
                             
@@ -146,7 +147,6 @@ void Manage::readAllFromFile() {
                             }
                         }
                         DeadlineEvent *newevent = tempdeadline;
-                        tempdeadline=new DeadlineEvent;
                         eventsList.push_back(newevent);
                     }
                 
@@ -155,7 +155,7 @@ void Manage::readAllFromFile() {
 		file.close();
 	}
 	else
-		cout << "Impossible to open the file" << endl;
+		cout << "Impossible to open the file\n" << endl;
 
         cout << "We found " << eventsList.size() << " events in database and saved them to vector list." << endl;
 }

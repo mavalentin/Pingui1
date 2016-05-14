@@ -8,11 +8,11 @@
 #include "./Event.h"
 
 Event::Event() {
-        cout << "creating event object" << endl;
+        //cout << "creating event object" << endl;
 }
 
 Event::~Event() {
-        cout << "destroying event object" << endl;
+        //cout << "destroying event object" << endl;
 }
 
 
