@@ -37,3 +37,10 @@ string Event::getDesc() {
         return description;
 }
 
+int Event::getID(){
+    return id;
+}
+
+void Event::setID(int i){
+    id=i;
+}
