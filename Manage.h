@@ -15,6 +15,7 @@
 #include "Event.h"
 #include "MeetingEvent.h"
 #include "DeadlineEvent.h"
+#include <sstream>
 using namespace std;
 
 class Manage {
@@ -26,8 +27,9 @@ public:
     string currentTime();
     void showAllEvents();
     string readAllFromFile();
-    string constructDataString(Event event);
+    template<typename T> string constructDataString(T* event);
     void createNewEvent(string type);
+    void setEventID(Event *e);
     
 private:
     vector<Event*> eventsList; //access objects with * and objectvariables with ->

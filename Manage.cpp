@@ -78,9 +78,38 @@ string Manage::readAllFromFile() {
 	return result;
 }
 
-string Manage::constructDataString(Event event){ ////under construction
+template<typename T> string Manage::constructDataString(T* event){
     string dataString;
-    dataString="\n/|\\MEETING/|\\\n"+event.getLabel()+"\n"+event.getDesc();
+    stringstream sstm;
+    sstm << event->getID() << "\n"+event->getLabel()+"\n"+event->getDesc()+"\n"+event->getStartDate();
+    dataString=sstm.str();
+    
+    //add meeting-specific data to string
+    if (MeetingEvent* m = dynamic_cast<MeetingEvent*>(event)){
+        dataString+="\n"+m->getEndDate()+"\n"+m->getLocation();
+        string temp=dataString;
+        dataString="/|\\MEETING/|\\\n"+temp;
+    }
+    
+    //add deadline-specific data to string
+    else if (DeadlineEvent* m = dynamic_cast<DeadlineEvent*>(event)){
+        string temp=dataString;
+        dataString="/|\\DEADLINE/|\\\n"+temp;
+    }
+    
+    
+    return dataString;
+}
+
+void Manage::setEventID(Event *e){
+    //if list is empty set ID=0, or else add 1 to the ID of the last object
+    if (eventsList.empty()){
+        e->setID(0);
+    }
+    else{
+        int lastID=eventsList.back()->getID();
+        e->setID(lastID+1);
+    }
 }
 
 
@@ -88,7 +117,7 @@ void Manage::createNewEvent(string type){
     string dataToWrite;
     
         if (type == "meeting"){
-            MeetingEvent event;
+            MeetingEvent *event = new MeetingEvent;
             string name, description, startDate, endDate, location;
 
             cout << "You selected the meeting event" << endl;
@@ -98,7 +127,7 @@ void Manage::createNewEvent(string type){
     // If user inputs "abort", returns to the main menu
             if(name == "abort")
                     return ;
-            event.setLabel(name);
+            event->setLabel(name);
             cout << "" << endl;
 
             //START DATE
@@ -107,7 +136,7 @@ void Manage::createNewEvent(string type){
             if(startDate == "abort")
                     return ;
             //get and set start date
-            event.setStartDate(startDate);
+            event->setStartDate(startDate);
             cout << "" << endl;
 
             //END DATE
@@ -116,7 +145,7 @@ void Manage::createNewEvent(string type){
             if(endDate == "abort")
                     return ;
             //get and set end date
-            event.setEndDate(endDate);
+            event->setEndDate(endDate);
             cout << "" << endl;
 
             //DESCRIPTION
@@ -125,7 +154,7 @@ void Manage::createNewEvent(string type){
             if(description == "abort")
                     return ;
             //get and set description
-            event.setDesc(description);
+            event->setDesc(description);
             cout << "" << endl;
 
             //LOCATION
@@ -134,23 +163,24 @@ void Manage::createNewEvent(string type){
             if(location == "abort")
                     return ;
             //get and set location
-            event.setLocation(location);
+            event->setLocation(location);
             cout << "" << endl;
 
-
+            //ID
+            setEventID(event);
+            
+            
             //insert event into the list
-            eventsList.push_back(&event);
-            
-            //TODO: call serialize and appendToFile
-            
+            eventsList.push_back(event);
+            //construct string to write to file
+            dataToWrite=constructDataString(event);
+                        
     }
     
     
     
-    
-    
     else if (type == "deadline"){
-            DeadlineEvent event;
+            DeadlineEvent *event=new DeadlineEvent;
             cout << "You selected the deadline event" << endl;
 
             string name, description, date;
@@ -160,7 +190,7 @@ void Manage::createNewEvent(string type){
     // If user inputs "abort", returns to the main menu
             if(name == "abort")
                     return ;
-            event.setLabel(name);
+            event->setLabel(name);
             cout << "" << endl;
 
             //DATE
@@ -169,7 +199,7 @@ void Manage::createNewEvent(string type){
             if(date == "abort")
                     return ;
             //get and set start date
-            event.setStartDate(date);
+            event->setStartDate(date);
             cout << "" << endl;
 
             //DESCRIPTION
@@ -178,25 +208,23 @@ void Manage::createNewEvent(string type){
             if(description == "abort")
                     return ;
             //get and set description
-            event.setDesc(description);
+            event->setDesc(description);
             cout << "" << endl;
             
+            //ID
+            setEventID(event);
             
             //insert event into the list
-            eventsList.push_back(&event);
+            eventsList.push_back(event);
+            //construct string to write to file
+            dataToWrite=constructDataString(event);
             
-            //TODO: call serialize and appendToFile
-            
-            
-
-	// Make a call to the Manage.cpp file that formats the string to add and pass it to the method
     }
     else
         cout <<"Invalid event type!\nExiting the add option" << endl;
-    
-    
-    //write created object to file
-    //todo: call serialize class
         
+        
+        //write to file
+        appendToFile(dataToWrite);
     
 }
