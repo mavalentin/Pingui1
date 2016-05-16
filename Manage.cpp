@@ -158,6 +158,9 @@ void Manage::readAllFromFile() {
 		cout << "Impossible to open the file\n" << endl;
 
         cout << "We found " << eventsList.size() << " events in database and saved them to vector list." << endl;
+        //how to extract an event from list and cast down: 
+        //MeetingEvent *testt = dynamic_cast<MeetingEvent*>(eventsList[0]);
+        //cout << testt->getLocation();
 }
 
 template<typename T> string Manage::constructDataString(T* event){
