@@ -327,3 +327,31 @@ void Manage::createNewEvent(string type){
         appendToFile(dataToWrite);
     
 }
+
+
+
+
+void Manage::removeEvent(string id)
+{
+	// Uncomment this part in case the id is not passed as parameter, but asked from this method
+//	cout<<"Insert the ID of the event you want to delete"<<endl;
+//	string id;
+//  getline(cin, id);
+
+    bool removed = false;
+    vector<Event*>::iterator it;
+    for (it=eventsList.begin(); it < eventsList.end(); it++)
+    {
+    	// If set to true, then it means that an event has been removed and all the IDs have to be shifted by one before
+    	if(removed)
+    		(*it)->setID((*it)->getID()-1);
+    	else
+	    	// Check if the ID of the actual event corresponds to the ID of the event to remove. If yes, remove it and set to true the boolean variable removed
+	    	if(id.compare((*it)->getID()+""))
+	    	{
+	    		eventsList.erase(eventsList.begin() + 1);
+	    		removed = true;
+	    	}    
+   }
+  // TODO: add them to a string that will be written on the database.dat file. Problem with casting at the constructDataString()
+}
