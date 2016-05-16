@@ -21,7 +21,7 @@ class Event {
 
     public:
         Event();
-        ~Event();
+        virtual ~Event();
     
         void setStartDate(string date1);
         string getStartDate();
