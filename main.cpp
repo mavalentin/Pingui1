@@ -17,6 +17,12 @@ using namespace std;
 int main(int argc, char** argv) {
     Manage m;
     Listen l;
+
+
+    string help = "Help section:\n\tAdd: type \"add\" to add an event. Instructions of what to insert will be followed\n\n\tUpdate: type \"update\" to modify an already existing event. Instructions of what to insert will be followed\n\n\tRemove: type \"remove\" to delete an already existing event. Instructions of what to insert will be followed\n\n\tRemove All: type \"removeall\" to delete all the events present in the file. Instructions of what to insert will be followed\n\n\tFilter: type \"filter\" to select a subset of events from the existing events saved into the file. Instructions of what to insert will be followed\n\n\tPrint: type \"print\" to print all the present events. Instructions of what to insert will be followed\n\n\tShow All: type \"showall\" to print all the present events. Instructions of what to insert will be followed\n\n\tCheck: type \"check\" to take a look at the events. Instructions of what to insert will be followed\n\n\tHelp: type \"help\" to get help\n\n\tExit: type \"exit\" to log out from the application\n";
+
+
+
     cout << "********* Welcome to PINGUI! **********" << endl;
     
     const string COMMANDS[] = { "add", "update", "remove", "filter", "print", "removeall", "showall", "check", "help", "exit"};
@@ -84,7 +90,8 @@ int main(int argc, char** argv) {
                 break;
             
             case 8:
-                cout << "You selected help" << endl;
+//                cout << "You selected help" << endl;
+                cout << help << endl;
                 break;
             
             case 9:
