@@ -42,6 +42,15 @@ void Manage::emptyFile(){
     cout << "All events removed" << endl;
 }
 
+void Manage::clearList(vector<Event*> eventsList){
+    //iterate through list, deallocate memory of dynamic objects
+    vector<Event*>::iterator it;
+        for (it=eventsList.begin(); it < eventsList.end(); it++){
+            delete *it;
+        }
+        eventsList.clear();
+}
+
 string Manage::currentTime(){
     time_t t = time(NULL);
     return asctime(localtime(&t));
@@ -66,12 +75,7 @@ void Manage::readAllFromFile() {
         
         //DELETION OF OLD OBJECTS
         //empty the vecor list and recreate events from read file
-            //iterate through list, deallocate memory of dynamic objects
-        vector<Event*>::iterator it;
-        for (it=eventsList.begin(); it < eventsList.end(); it++){
-            delete *it;
-        }
-        eventsList.clear();
+        clearList(eventsList);
         
         //RECREATION OF OBJECTS
 	//Checks if file has been opened
@@ -158,6 +162,8 @@ void Manage::readAllFromFile() {
 		cout << "Impossible to open the file\n" << endl;
 
         cout << "We found " << eventsList.size() << " events in database and saved them to vector list." << endl;
+        
+        
         //how to extract an event from list and cast down: 
         //MeetingEvent *testt = dynamic_cast<MeetingEvent*>(eventsList[0]);
         //cout << testt->getLocation();

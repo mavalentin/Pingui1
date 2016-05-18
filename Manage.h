@@ -33,6 +33,7 @@ public:
     void setEventID(Event *e);
     void listenToData(string type);
     void removeEvent(string id);
+    void clearList(vector<Event*> eventsList);
     
 private:
     vector<Event*> eventsList; //access objects with * and objectvariables with ->
