@@ -31,7 +31,6 @@ int main(int argc, char** argv) {
 	{
 
         // Get the line inputs
-        // scanf("%s", user_input);
         getline(cin, user_input);
 
         command = -1;
@@ -52,7 +51,6 @@ int main(int argc, char** argv) {
             case 0:
                 cout << "You selected add" << endl;
                 cout << "Select if the event is a \"meeting\" or a \"deadline\"" << endl;
-                //scanf("%s", user_input);
                 getline(cin,user_input);
                 m.createNewEvent(user_input);
                 break;

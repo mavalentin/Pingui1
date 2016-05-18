@@ -7,9 +7,10 @@
  
 #include "Manage.h"
 #include "Listen.h"
+#include "GUI.h"
 
 Listen l;
-
+GUI gui;
 
 
 Manage::Manage() {
@@ -57,12 +58,8 @@ string Manage::currentTime(){
 }
 
 void Manage::showAllEvents() {
-    cout << "*********" << endl;
-    vector<Event*>::iterator it;
-    for (it=eventsList.begin(); it < eventsList.end(); it++){
-        //create the string for output
-    }
-    cout << "*********" << endl;
+    // Prrint all the events on the command line
+    gui.printAll(eventsList);
 }
 
 void Manage::readAllFromFile() {
