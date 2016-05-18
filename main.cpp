@@ -6,6 +6,8 @@
  */
 
 #include <iostream>
+#include <stdio.h>
+#include <string.h>
 #include "DeadlineEvent.h"
 #include "Manage.h"
 #include "Listen.h"
@@ -16,90 +18,87 @@ int main(int argc, char** argv) {
     Manage m;
     Listen l;
     cout << "********* Welcome to PINGUI! **********" << endl;
-    //m.appendToFile("Another day with Pingui "+m.currentTime());
+    
+    const string COMMANDS[] = { "add", "update", "remove", "filter", "print", "removeall", "showall", "check", "help", "exit"};
+    const int NUM_COMMANDS = sizeof(COMMANDS)/sizeof(COMMANDS[0]);
+
+    string user_input;
+    int command;
 
     m.readAllFromFile();
     
-    //initialize listening
     while(1)
 	{
-        string command;
-        getline(cin, command);
-        if(command == "add" || command == "add event")
+
+        // Get the line inputs
+        // scanf("%s", user_input);
+        getline(cin, user_input);
+
+        command = -1;
+
+        // Loop through the command list
+        for (int i = 0; i < NUM_COMMANDS; ++i)
         {
-            cout << "You selected add" << endl;
-            cout << "Select if the event is a \"meeting\" or a \"deadline\"" << endl;
-            getline(cin, command);
-            m.createNewEvent(command);
-        }
-        else
-        {
-            if(command == "update" || command == "update event")
+            // Look for command in the user input
+            if ( COMMANDS[i] == user_input )
             {
+                command = i;
+                break;
+            }
+        }
+
+        switch ( command )
+        {
+            case 0:
+                cout << "You selected add" << endl;
+                cout << "Select if the event is a \"meeting\" or a \"deadline\"" << endl;
+                //scanf("%s", user_input);
+                getline(cin,user_input);
+                m.createNewEvent(user_input);
+                break;
+
+            case 1:
                 cout << "You selected update" << endl;
-            }
-            else
-            {
-                if(command == "remove" || command == "remove event")
-                {
-                    cout << "You selected remove" << endl;
-                }
-                else
-                {
-                    if(command == "filter" || command == "filter event")
-                    {
-                        cout << "You selected filter" << endl;
-                    }
-                    else
-                    {
-                        if(command == "print" || command == "print event")
-                        {
-                            cout << "You selected print" << endl;
-                        }
-                        else
-                        {
-                            if(command == "remove all")
-                            {
-                                l.removeAll(); 
-                            }
-                            else
-                            {
-                                if(command == "show all")
-                                {
-                                    m.showAllEvents(); 
-                                }
-                                else
-                                {
-                                    if(command == "check" || command == "check event")
-                                    {
-                                        cout << "You selected check" << endl;
-                                    }
-                                    else
-                                    {
-                                    	if(command == "help")
-                                    	{
-                                    		cout << "You selected help" << endl;
-                                    	}
-                                    	else
-                                    	{
-                                    		if(command == "exit" || command == "kill pingui")
-                                       		{
-                                         	   cout << "***********************Goodbye***********************" << endl;
-                                        	   return 0;
-                                        	}
-                                       		else
-        	                                {
-        	                                	cout << "***Invalid command!***\n***Digit help for the list of commands***" << endl;
-            	                            }
-                                    	}
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            }
+                break;
+            
+            case 2:
+                cout << "You selected remove" << endl;
+                break;
+            
+            case 3:
+                cout << "You selected filter" << endl;
+                break;
+            
+            case 4:
+                cout << "You selected print" << endl;
+                break;
+            
+            case 5:
+                l.removeAll();
+                break;
+            
+            case 6:
+                m.showAllEvents();
+                break;
+            
+            case 7:
+                cout << "You selected check" << endl;
+                break;
+            
+            case 8:
+                cout << "You selected help" << endl;
+                break;
+            
+            case 9:
+                cout << "***********************Goodbye***********************" << endl;
+                return 0;
+                break;
+            
+            default:
+                cout << "***Invalid command!***\n***Digit help for the list of commands***" << endl;
+
         }
+
         cout << "Waiting for another command from the user" << endl;
     }
     return 0;
