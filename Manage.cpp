@@ -58,8 +58,11 @@ string Manage::currentTime(){
 
 void Manage::showAllEvents() {
     cout << "*********" << endl;
-	//cout << readAllFromFile() << endl; //here we will need to read from the vectorlist instead of database	
-	cout << "*********" << endl;
+    vector<Event*>::iterator it;
+    for (it=eventsList.begin(); it < eventsList.end(); it++){
+        //create the string for output
+    }
+    cout << "*********" << endl;
 }
 
 void Manage::readAllFromFile() {
@@ -150,6 +153,7 @@ void Manage::readAllFromFile() {
                                     
                             }
                         }
+                        //copy the temporary event to a new one and add it to the list
                         DeadlineEvent *newevent = tempdeadline;
                         eventsList.push_back(newevent);
                     }
