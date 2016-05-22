@@ -71,7 +71,7 @@ int main(int argc, char** argv) {
             
             case 3:
                 cout << "You selected filter" << endl;
-                l.filter();
+                m.filter();
                 break;
             
             case 4:

@@ -363,5 +363,32 @@ void Manage::removeEvent(string id)
 	    		removed = true;
 	    	}    
    }
+
+   
+
   // TODO: add them to a string that will be written on the database.dat file. Problem with casting at the constructDataString()
+}
+
+
+void Manage::filter()
+{
+    string field_to_filter, type_of_filter, value_to_filter;
+    
+    cout << "Insert the field you want to filter" << endl;
+    getline(cin, field_to_filter);
+    cout << "Insert the criteria for filtering (greater, equal or less)" << endl;
+    getline(cin, type_of_filter);
+    cout << "Insert the value to filter" << endl;
+    getline(cin, value_to_filter);
+
+    vector<Event*>::iterator it;
+    std::vector<Event*> event;
+    for(it=eventsList.begin(); it < eventsList.end(); it++)
+    {
+        cout << eventsList[1]->getID() << endl;
+        if((*it)->getID()+"" == value_to_filter)
+            event.push_back(*it);
+    }
+
+    // TODO: print all the events found in the list event  
 }

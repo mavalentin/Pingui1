@@ -34,6 +34,7 @@ public:
     void listenToData(string type);
     void removeEvent(string id);
     void clearList(vector<Event*> eventsList);
+    void filter();
     
 private:
     vector<Event*> eventsList; //access objects with * and objectvariables with ->
