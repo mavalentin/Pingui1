@@ -33,10 +33,8 @@ void Manage::appendToFile(string data){
 void Manage::emptyFile(){
     //Creates a filestream
     fstream file;
-    //Creates and opens the file (override mode)
-    file.open("database.dat", fstream::out);
-    //Writes empty string on the file
-    file << "" << endl;
+    //Truncates the file
+    file.open("database.dat", fstream::out | std::fstream::trunc);
     //Closes the file
     file.close();
 
@@ -44,7 +42,7 @@ void Manage::emptyFile(){
 }
 
 void Manage::clearList(vector<Event*> eventsList){
-    //iterate through list, deallocate memory of dynamic objects
+    //iterate through list, deallocate memory of dynamic objects and clear the list
     vector<Event*>::iterator it;
         for (it=eventsList.begin(); it < eventsList.end(); it++){
             delete *it;
@@ -193,6 +191,17 @@ template<typename T> string Manage::constructDataString(T* event){
     
     
     return dataString;
+}
+
+void Manage::updateFile(){
+    //empty file
+    emptyFile();
+    //rewrite file with all events in the list
+    vector<Event*>::iterator it;
+        for (it=eventsList.begin(); it < eventsList.end(); it++){
+            Event *e = *it;
+            appendToFile(constructDataString(e));
+        }
 }
 
 void Manage::setEventID(Event *e){
@@ -355,20 +364,21 @@ void Manage::removeEvent(string id)
     for (it=eventsList.begin(); it < eventsList.end(); it++)
     {
     	// If set to true, then it means that an event has been removed and all the IDs have to be shifted by one before
-    	if(removed)
-    		(*it)->setID((*it)->getID()-1);
+    	if(removed){
+    		//(*it)->setID((*it)->getID()-1);
+        }
     	else
 	    	// Check if the ID of the actual event corresponds to the ID of the event to remove. If yes, remove it and set to true the boolean variable removed
 	    	if(id.compare((*it)->getID()+""))
 	    	{
-	    		eventsList.erase(eventsList.begin() + 1);
+                        Event* e=*(eventsList.begin()+1);
+                        delete e;
+                        eventsList.erase(eventsList.begin() + 1);
 	    		removed = true;
 	    	}    
    }
-
-   string prova = constructDataString(eventsList[1]);
-   cout << prova << endl;
-  // TODO: add them to a string that will be written on the database.dat file. Problem with casting at the constructDataString()
+    //update database file
+    updateFile();
 }
 
 

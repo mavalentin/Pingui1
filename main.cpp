@@ -26,6 +26,7 @@ int main(int argc, char** argv) {
     const int NUM_COMMANDS = sizeof(COMMANDS)/sizeof(COMMANDS[0]);
 
     string user_input;
+    string dId;
     int command;
 
     m.readAllFromFile();
@@ -64,7 +65,9 @@ int main(int argc, char** argv) {
             
             case 2:
                 gui.notify("You selected remove");
-                m.removeEvent("1");
+                gui.ask("Please enter the ID of the event to remove");
+                getline(cin,dId);
+                m.removeEvent(dId);
                 break;
             
             case 3:
