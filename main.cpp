@@ -67,6 +67,7 @@ int main(int argc, char** argv) {
             
             case 2:
                 cout << "You selected remove" << endl;
+                m.removeEvent("1");
                 break;
             
             case 3:

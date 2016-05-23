@@ -364,8 +364,8 @@ void Manage::removeEvent(string id)
 	    	}    
    }
 
-   
-
+   string prova = constructDataString(eventsList[1]);
+   cout << prova << endl;
   // TODO: add them to a string that will be written on the database.dat file. Problem with casting at the constructDataString()
 }
 
