@@ -40,7 +40,7 @@ void Manage::emptyFile(){
     //Closes the file
     file.close();
 
-    cout << "All events removed" << endl;
+    gui.notify("All events removed");
 }
 
 void Manage::clearList(vector<Event*> eventsList){
@@ -58,8 +58,8 @@ string Manage::currentTime(){
 }
 
 void Manage::showAllEvents() {
-    // Prrint all the events on the command line
-    gui.printAll(eventsList);
+    // Print all the events on the command line
+    gui.list(eventsList);
 }
 
 void Manage::readAllFromFile() {
@@ -160,9 +160,8 @@ void Manage::readAllFromFile() {
 		file.close();
 	}
 	else
-		cout << "Impossible to open the file\n" << endl;
-
-        cout << "We found " << eventsList.size() << " events in database and saved them to vector list." << endl;
+		gui.error("Impossible to open the file");
+        gui.notify("We found " + intToString(eventsList.size()) + " events in database and saved them to vector list.");
         
         
         //how to extract an event from list and cast down: 
@@ -170,11 +169,14 @@ void Manage::readAllFromFile() {
         //cout << testt->getLocation();
 }
 
-template<typename T> string Manage::constructDataString(T* event){
-    string dataString;
+string Manage::intToString(int i){
     stringstream sstm;
-    sstm << event->getID() << "\n"+event->getLabel()+"\n"+event->getDesc()+"\n"+event->getStartDate()+"\n";
-    dataString=sstm.str();
+    sstm << i;
+    return sstm.str();
+}
+
+template<typename T> string Manage::constructDataString(T* event){
+    string dataString = intToString(event->getID())+"\n"+event->getLabel()+"\n"+event->getDesc()+"\n"+event->getStartDate()+"\n";
     
     //add meeting-specific data to string
     if (MeetingEvent* m = dynamic_cast<MeetingEvent*>(event)){
@@ -272,7 +274,7 @@ void Manage::createNewEvent(string type){
         if (type == "meeting"){
             MeetingEvent *event = new MeetingEvent;
 
-            cout << "You selected the meeting event" << endl;
+            gui.notify("You selected the meeting event");
 
             //call listening function
             listenToData(type);
@@ -304,7 +306,7 @@ void Manage::createNewEvent(string type){
     
     else if (type == "deadline"){
             DeadlineEvent *event=new DeadlineEvent;
-            cout << "You selected the deadline event" << endl;
+            gui.notify("You selected the deadline event");
 
             //call listening function
             listenToData(type);
@@ -330,7 +332,7 @@ void Manage::createNewEvent(string type){
             
     }
     else
-        cout <<"Invalid event type!\nExiting the add option" << endl;
+        gui.error("Invalid event type!\nExiting the add option");
         
         
         //write to file
@@ -374,8 +376,8 @@ void Manage::filter()
 {
     string value_to_filter;
     
-    cout << "The field that will be filtered is the name of the event" << endl;
-    cout << "Insert the value to filter" << endl;
+    gui.notify("The field that will be filtered is the name of the event");
+    gui.ask("Insert the value to filter");
     getline(cin, value_to_filter);
 
     vector<Event*>::iterator it;

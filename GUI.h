@@ -11,6 +11,7 @@
 #include <iostream>
 #include "./Event.h"
 #include <vector>
+#include <string>
 using namespace std;
 
 class GUI {
@@ -19,7 +20,15 @@ class GUI {
     public:
     	GUI();
         virtual ~GUI();
-        void printAll(vector<Event*> eventsList);
+        void list(vector<Event*> eventsList);
+        void error(string e);
+        void invalidCommand();
+        void notify(string message);
+        void ask(string question);
+        void help();
+        void welcome();
+        void greetings();
+        void waitingNextCommand();
 
 };
 

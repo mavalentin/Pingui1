@@ -39,6 +39,7 @@ public:
 private:
     vector<Event*> eventsList; //access objects with * and objectvariables with ->
     string name, description, startDate, endDate, location;
+    string intToString(int i);
 };
 
 #endif	/* MANAGE_H */

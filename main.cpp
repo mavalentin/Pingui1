@@ -11,19 +11,16 @@
 #include "DeadlineEvent.h"
 #include "Manage.h"
 #include "Listen.h"
+#include "GUI.h"
 
 using namespace std;
 
 int main(int argc, char** argv) {
     Manage m;
     Listen l;
+    GUI gui;
 
-
-    string help = "Help section:\n\tAdd: type \"add\" to add an event. Instructions of what to insert will be followed\n\n\tUpdate: type \"update\" to modify an already existing event. Instructions of what to insert will be followed\n\n\tRemove: type \"remove\" to delete an already existing event. Instructions of what to insert will be followed\n\n\tRemove All: type \"removeall\" to delete all the events present in the file. Instructions of what to insert will be followed\n\n\tFilter: type \"filter\" to select a subset of events from the existing events saved into the file. Instructions of what to insert will be followed\n\n\tPrint: type \"print\" to print all the present events. Instructions of what to insert will be followed\n\n\tShow All: type \"showall\" to print all the present events. Instructions of what to insert will be followed\n\n\tCheck: type \"check\" to take a look at the events. Instructions of what to insert will be followed\n\n\tHelp: type \"help\" to get help\n\n\tExit: type \"exit\" to log out from the application\n";
-
-
-
-    cout << "********* Welcome to PINGUI! **********" << endl;
+    gui.welcome();
     
     const string COMMANDS[] = { "add", "update", "remove", "filter", "print", "removeall", "showall", "check", "help", "exit"};
     const int NUM_COMMANDS = sizeof(COMMANDS)/sizeof(COMMANDS[0]);
@@ -55,28 +52,28 @@ int main(int argc, char** argv) {
         switch ( command )
         {
             case 0:
-                cout << "You selected add" << endl;
-                cout << "Select if the event is a \"meeting\" or a \"deadline\"" << endl;
+                gui.notify("You selected add");
+                gui.ask("Select if the event is a \"meeting\" or a \"deadline\"");
                 getline(cin,user_input);
                 m.createNewEvent(user_input);
                 break;
 
             case 1:
-                cout << "You selected update" << endl;
+                gui.notify("You selected update");
                 break;
             
             case 2:
-                cout << "You selected remove" << endl;
+                gui.notify("You selected remove");
                 m.removeEvent("1");
                 break;
             
             case 3:
-                cout << "You selected filter" << endl;
+                gui.notify("You selected filter");
                 m.filter();
                 break;
             
             case 4:
-                cout << "You selected print" << endl;
+                gui.notify("You selected print");
                 break;
             
             case 5:
@@ -88,25 +85,24 @@ int main(int argc, char** argv) {
                 break;
             
             case 7:
-                cout << "You selected check" << endl;
+                gui.notify("You selected check");
                 break;
             
             case 8:
-//                cout << "You selected help" << endl;
-                cout << help << endl;
+                gui.help();
                 break;
             
             case 9:
-                cout << "***********************Goodbye***********************" << endl;
+                gui.greetings();
                 return 0;
                 break;
             
             default:
-                cout << "***Invalid command!***\n***Digit help for the list of commands***" << endl;
+                gui.invalidCommand();
 
         }
 
-        cout << "Waiting for another command from the user" << endl;
+        gui.waitingNextCommand();
     }
     return 0;
 }
