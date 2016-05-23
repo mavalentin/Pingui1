@@ -29,6 +29,7 @@ int main(int argc, char** argv) {
     const int NUM_COMMANDS = sizeof(COMMANDS)/sizeof(COMMANDS[0]);
 
     string user_input;
+    string dId;
     int command;
 
     m.readAllFromFile();
@@ -67,7 +68,9 @@ int main(int argc, char** argv) {
             
             case 2:
                 cout << "You selected remove" << endl;
-                m.removeEvent("1");
+                cout << "Please enter the ID of the event to remove" << endl;
+                getline(cin,dId);
+                m.removeEvent(dId);
                 break;
             
             case 3:

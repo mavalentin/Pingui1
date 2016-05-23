@@ -362,8 +362,9 @@ void Manage::removeEvent(string id)
     for (it=eventsList.begin(); it < eventsList.end(); it++)
     {
     	// If set to true, then it means that an event has been removed and all the IDs have to be shifted by one before
-    	if(removed)
-    		(*it)->setID((*it)->getID()-1);
+    	if(removed){
+    		//(*it)->setID((*it)->getID()-1);
+        }
     	else
 	    	// Check if the ID of the actual event corresponds to the ID of the event to remove. If yes, remove it and set to true the boolean variable removed
 	    	if(id.compare((*it)->getID()+""))
