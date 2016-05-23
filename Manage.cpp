@@ -33,7 +33,7 @@ void Manage::appendToFile(string data){
 void Manage::emptyFile(){
     //Creates a filestream
     fstream file;
-    //Creates and opens the file (override mode)
+    //Truncates the file
     file.open("database.dat", fstream::out | std::fstream::trunc);
     //Closes the file
     file.close();
@@ -42,7 +42,7 @@ void Manage::emptyFile(){
 }
 
 void Manage::clearList(vector<Event*> eventsList){
-    //iterate through list, deallocate memory of dynamic objects
+    //iterate through list, deallocate memory of dynamic objects and clear the list
     vector<Event*>::iterator it;
         for (it=eventsList.begin(); it < eventsList.end(); it++){
             delete *it;
@@ -192,7 +192,9 @@ template<typename T> string Manage::constructDataString(T* event){
 }
 
 void Manage::updateFile(){
+    //empty file
     emptyFile();
+    //rewrite file with all events in the list
     vector<Event*>::iterator it;
         for (it=eventsList.begin(); it < eventsList.end(); it++){
             Event *e = *it;
@@ -372,7 +374,7 @@ void Manage::removeEvent(string id)
 	    		removed = true;
 	    	}    
    }
-
+    //update database file
     updateFile();
 }
 
