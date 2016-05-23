@@ -372,12 +372,9 @@ void Manage::removeEvent(string id)
 
 void Manage::filter()
 {
-    string field_to_filter, type_of_filter, value_to_filter;
+    string value_to_filter;
     
-    cout << "Insert the field you want to filter" << endl;
-    getline(cin, field_to_filter);
-    cout << "Insert the criteria for filtering (greater, equal or less)" << endl;
-    getline(cin, type_of_filter);
+    cout << "The field that will be filtered is the name of the event" << endl;
     cout << "Insert the value to filter" << endl;
     getline(cin, value_to_filter);
 
@@ -385,8 +382,8 @@ void Manage::filter()
     std::vector<Event*> event;
     for(it=eventsList.begin(); it < eventsList.end(); it++)
     {
-        cout << eventsList[1]->getID() << endl;
-        if((*it)->getID()+"" == value_to_filter)
+        cout << eventsList[1]->getLabel() << endl;
+        if((*it)->getLabel() == value_to_filter)
             event.push_back(*it);
     }
 
