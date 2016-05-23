@@ -34,9 +34,7 @@ void Manage::emptyFile(){
     //Creates a filestream
     fstream file;
     //Creates and opens the file (override mode)
-    file.open("database.dat", fstream::out);
-    //Writes empty string on the file
-    file << "" << endl;
+    file.open("database.dat", fstream::out | std::fstream::trunc);
     //Closes the file
     file.close();
 
@@ -368,14 +366,14 @@ void Manage::removeEvent(string id)
 	    	// Check if the ID of the actual event corresponds to the ID of the event to remove. If yes, remove it and set to true the boolean variable removed
 	    	if(id.compare((*it)->getID()+""))
 	    	{
-	    		eventsList.erase(eventsList.begin() + 1);
+                        Event* e=*(eventsList.begin()+1);
+                        delete e;
+                        eventsList.erase(eventsList.begin() + 1);
 	    		removed = true;
 	    	}    
    }
 
-   string prova = constructDataString(eventsList[1]);
-   cout << prova << endl;
-  // TODO: add them to a string that will be written on the database.dat file. Problem with casting at the constructDataString()
+    updateFile();
 }
 
 
