@@ -29,6 +29,7 @@ public:
     void showAllEvents();
     void readAllFromFile();
     template<typename T> string constructDataString(T* event);
+    void updateFile();
     void createNewEvent(string type);
     void setEventID(Event *e);
     void listenToData(string type);

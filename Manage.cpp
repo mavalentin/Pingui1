@@ -193,6 +193,15 @@ template<typename T> string Manage::constructDataString(T* event){
     return dataString;
 }
 
+void Manage::updateFile(){
+    emptyFile();
+    vector<Event*>::iterator it;
+        for (it=eventsList.begin(); it < eventsList.end(); it++){
+            Event *e = *it;
+            appendToFile(constructDataString(e));
+        }
+}
+
 void Manage::setEventID(Event *e){
     //if list is empty set ID=0, or else add 1 to the ID of the last object
     if (eventsList.empty()){
