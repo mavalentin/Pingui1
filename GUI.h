@@ -29,7 +29,7 @@ class GUI {
         void welcome();
         void greetings();
         void waitingNextCommand();
-
+        void pengui();
 };
 
 #endif	/* GUI_H */

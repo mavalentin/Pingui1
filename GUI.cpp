@@ -24,6 +24,9 @@ void GUI::welcome(){
 
     cout << endl << atest << "Welcome to PINGUI!" << endl2;
 
+    // Print Pengui on the screen
+    pengui();
+
 }
 
 void GUI::greetings(){
@@ -85,5 +88,20 @@ void GUI::help(){
 	string help = "Help section:\n\tAdd: type \"add\" to add an event. Instructions of what to insert will be followed\n\n\tUpdate: type \"update\" to modify an already existing event. Instructions of what to insert will be followed\n\n\tRemove: type \"remove\" to delete an already existing event. Instructions of what to insert will be followed\n\n\tRemove All: type \"removeall\" to delete all the events present in the file. Instructions of what to insert will be followed\n\n\tFilter: type \"filter\" to select a subset of events from the existing events saved into the file. Instructions of what to insert will be followed\n\n\tPrint: type \"print\" to print all the present events. Instructions of what to insert will be followed\n\n\tShow All: type \"showall\" to print all the present events. Instructions of what to insert will be followed\n\n\tCheck: type \"check\" to take a look at the events. Instructions of what to insert will be followed\n\n\tHelp: type \"help\" to get help\n\n\tExit: type \"exit\" to log out from the application\n";
 
 	cout << endl << help << endl2;
+
+}
+
+void GUI::pengui(){
+
+    cout << endl;
+
+    cout << atest << "   __" << endl;
+    cout << atest << "-=(o '." << endl;
+    cout << atest << "   '.-.\\" << endl;
+    cout << atest << "   /|  \\\\" << endl;
+    cout << atest << "   '|  ||" << endl;
+    cout << atest << "    _\\_):,_" << endl;
+
+    cout << endl2;
 
 }
