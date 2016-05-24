@@ -8,6 +8,8 @@
 #ifndef LISTEN_H
 #define	LISTEN_H
 #include <iostream>
+#include "Manage.h"
+#include "GUI.h"
 using namespace std;
 
 class Listen 
@@ -23,6 +25,8 @@ class Listen
         string listenLocation(string type);
     void removeAll();
     private:
+        Manage m;
+        GUI gui;
 };
 
 #endif	/* LISTEN_H */

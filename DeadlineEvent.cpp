@@ -6,12 +6,13 @@
  */
 
 #include "DeadlineEvent.h"
+
 DeadlineEvent::DeadlineEvent() {
-    cout << "creating deadlineevent object" << endl;
+    //gui.notify("creating deadlineevent object");
 }
 
 DeadlineEvent::~DeadlineEvent() {
-    cout << "destroying deadlineevent object" << endl;
+    //gui.notify("destroying deadlineevent object");
 }
 
 

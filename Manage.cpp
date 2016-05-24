@@ -12,7 +12,6 @@
 Listen l;
 GUI gui;
 
-
 Manage::Manage() {
 }
 
@@ -341,7 +340,8 @@ void Manage::createNewEvent(string type){
             
     }
     else
-        gui.error("Invalid event type!\nExiting the add option");
+        gui.error("Invalid event type!");
+        gui.notify("Exiting the add option");
         
         
         //write to file

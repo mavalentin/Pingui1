@@ -8,14 +8,14 @@
 #include "MeetingEvent.h"
 
 MeetingEvent::MeetingEvent() {
-    cout << "creating meetingevent object" << endl;
+    //gui.notify("creating meetingevent object");
 }
 
 MeetingEvent::MeetingEvent(const MeetingEvent& orig) {
 }
 
 MeetingEvent::~MeetingEvent() {
-    cout << "destroying meetingevent object" << endl;
+    //gui.notify("destroying meetingevent object");
 }
 
 void MeetingEvent::setLocation(string l) {
