@@ -81,9 +81,8 @@ void Listen::removeAll()
     getline(cin, command);
     if(command == "Y" || command == "y")
     {
-        gui.notify("Selected remove all");
         m.emptyFile();
     }
     else
-        gui.notify("Aborted remove all");
+        gui.warn("Aborted remove all");
 }

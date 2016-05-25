@@ -385,19 +385,19 @@ void Manage::removeEvent(string id)
 }
 
 
-void Manage::filter()
+void Manage::find()
 {
     string value_to_filter;
     
-    gui.notify("The field that will be filtered is the name of the event");
-    gui.ask("Insert the value to filter");
+    //gui.notify("The field that will be filtered is the name of the event");
+    gui.ask("Insert the name/label of the event");
     getline(cin, value_to_filter);
 
     vector<Event*>::iterator it;
     std::vector<Event*> event;
     for(it=eventsList.begin(); it < eventsList.end(); it++)
     {
-        cout << eventsList[1]->getLabel() << endl;
+        //cout << eventsList[1]->getLabel() << endl;
         if((*it)->getLabel() == value_to_filter)
             event.push_back(*it);
     }

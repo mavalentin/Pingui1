@@ -25,11 +25,12 @@ class GUI {
         void invalidCommand();
         void notify(string message);
         void ask(string question);
+        void warn(string warning);
         void help();
         void welcome();
         void greetings();
         void waitingNextCommand();
-        void pengui();
+        void pingui();
 };
 
 #endif	/* GUI_H */

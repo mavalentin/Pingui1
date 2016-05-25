@@ -22,12 +22,12 @@ int main(int argc, char** argv) {
 
     gui.welcome();
     
-    const string COMMANDS[] = { "add", "update", "remove", "filter", "print", "removeall", "showall", "check", "help", "exit"};
+    const string COMMANDS[] = { "add", "update", "remove", "find", "print", "removeall", "showall", "help", "commands", "bye", "exit", "pingui", "hello"};
     const int NUM_COMMANDS = sizeof(COMMANDS)/sizeof(COMMANDS[0]);
 
     string user_input;
     string dId;
-    int command;
+    int command, i;
 
     m.readAllFromFile();
     
@@ -38,45 +38,52 @@ int main(int argc, char** argv) {
         getline(cin, user_input);
 
         command = -1;
+        i = 0;
 
         // Loop through the command list
-        for (int i = 0; i < NUM_COMMANDS; ++i)
+        while (command == -1 && i < NUM_COMMANDS)
         {
             // Look for command in the user input
             if ( COMMANDS[i] == user_input )
             {
                 command = i;
-                break;
             }
+
+            /*
+            // Check if the word is close to the user input
+            for (int n = 0; n != user_input.size(); n++)
+            {
+                //cout << user_input[n] << endl;
+            } */
+
+            i++;
         }
 
         switch ( command )
         {
             case 0:
-                gui.notify("You selected add");
                 gui.ask("Select if the event is a \"meeting\" or a \"deadline\"");
                 getline(cin,user_input);
                 m.createNewEvent(user_input);
                 break;
 
             case 1:
-                gui.notify("You selected update");
+                //gui.notify("You selected update");
                 break;
             
             case 2:
-                gui.notify("You selected remove");
                 gui.ask("Please enter the ID of the event to remove");
                 getline(cin,dId);
                 m.removeEvent(dId);
                 break;
             
             case 3:
-                gui.notify("You selected filter");
-                m.filter();
+                //gui.notify("You selected filter");
+                m.find();
                 break;
             
             case 4:
-                gui.notify("You selected print");
+                //gui.notify("You selected print");
                 break;
             
             case 5:
@@ -88,18 +95,21 @@ int main(int argc, char** argv) {
                 break;
             
             case 7:
-                gui.notify("You selected check");
-                break;
-            
             case 8:
                 gui.help();
                 break;
             
-            case 9:
+            case 9:            
+            case 10:
                 gui.greetings();
                 return 0;
                 break;
             
+            case 11:
+            case 12:
+                gui.pingui();
+                break;
+
             default:
                 gui.invalidCommand();
 
@@ -107,5 +117,6 @@ int main(int argc, char** argv) {
 
         gui.waitingNextCommand();
     }
+
     return 0;
 }
