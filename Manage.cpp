@@ -402,5 +402,6 @@ void Manage::filter()
             event.push_back(*it);
     }
 
+    gui.list(event);
     // TODO: print all the events found in the list event  
 }
