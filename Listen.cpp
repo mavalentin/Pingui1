@@ -83,6 +83,14 @@ string Listen::listenLocation(string type){
     return location;
 }
 
+void Listen::removeEvent()
+{
+    string dId;
+    gui.ask("Please enter the ID of the event to remove");
+    getline(cin,dId);
+    m.removeEvent(dId);
+}
+
 void Listen::removeAll()
 {
     // Remove all the data stored in the database file
@@ -96,4 +104,12 @@ void Listen::removeAll()
     }
     else
         gui.warn("Aborted remove all");
+}
+
+void Listen::addEvent()
+{
+    string user_input;
+    gui.ask("Select if the event is a \"meeting\" or a \"deadline\"");
+    getline(cin,user_input);
+    m.createNewEvent(user_input);
 }

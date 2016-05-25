@@ -15,7 +15,7 @@ using namespace std;
 class Listen 
 {
     public:
-    Listen();
+        Listen();
         Listen(const Listen& orig);
         virtual ~Listen();
         string listenLabel(string type);
@@ -23,7 +23,9 @@ class Listen
         string listenEndDate(string type);
         string listenDescription(string type);
         string listenLocation(string type);
-    void removeAll();
+        void removeEvent();
+        void removeAll();
+        void addEvent();
     private:
         Manage m;
         GUI gui;

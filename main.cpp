@@ -29,7 +29,6 @@ int main(int argc, char** argv) {
     const int NUM_COMMANDS = sizeof(COMMANDS)/sizeof(COMMANDS[0]);
 
     string user_input;
-    string dId;
     int command, i;
 
     m.readAllFromFile();
@@ -65,9 +64,7 @@ int main(int argc, char** argv) {
         switch ( command )
         {
             case 0:
-                gui.ask("Select if the event is a \"meeting\" or a \"deadline\"");
-                getline(cin,user_input);
-                m.createNewEvent(user_input);
+                l.addEvent();
                 break;
 
             case 1:
@@ -75,9 +72,7 @@ int main(int argc, char** argv) {
                 break;
             
             case 2:
-                gui.ask("Please enter the ID of the event to remove");
-                getline(cin,dId);
-                m.removeEvent(dId);
+                l.removeEvent();
                 break;
             
             case 3:

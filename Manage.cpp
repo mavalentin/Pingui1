@@ -33,11 +33,9 @@ void Manage::emptyFile(){
     //Creates a filestream
     fstream file;
     //Truncates the file
-    file.open("database.dat", fstream::out | std::fstream::trunc);
+    file.open("database.dat", fstream::out | fstream::trunc);
     //Closes the file
     file.close();
-
-    gui.notify("All events removed");
 }
 
 void Manage::clearList(vector<Event*> eventsList){
@@ -202,6 +200,7 @@ void Manage::updateFile(){
             appendToFile(constructDataString(e));
         }
 }
+
 
 void Manage::setEventID(Event *e){
     //if list is empty set ID=0, or else add 1 to the ID of the last object
