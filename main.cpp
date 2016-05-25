@@ -15,10 +15,13 @@
 
 using namespace std;
 
+vector<Event*> Manage::eventsList;
+
 int main(int argc, char** argv) {
     Manage m;
     Listen l;
     GUI gui;
+    bool av;
 
     gui.welcome();
     
@@ -89,6 +92,15 @@ int main(int argc, char** argv) {
             
             case 7:
                 gui.notify("You selected check");
+                //testcode, remove later
+                getline(cin, user_input);
+                av=m.checkAvailability(user_input);
+                if(av==false){
+                    cout << "false";
+                }
+                if(av==true){
+                    cout << "true";
+                }
                 break;
             
             case 8:
