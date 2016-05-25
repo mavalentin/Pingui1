@@ -34,11 +34,22 @@ string Listen::listenLabel(string type) {
     
 string Listen::listenStartDate(string type){
     string startDate;
-    while (startDate.empty()){
+    bool available;
+    while (available==false || startDate.empty()){
         gui.ask("Insert the date and time of the "+type);
         getline(cin, startDate);
+        
         if (startDate.empty()){
             gui.error("A date and time is required");
+        }
+        else{
+        available=m.checkAvailability(startDate);
+        if (available==true){
+            cout << "L:this is available"<<endl;
+            }
+        else {
+            gui.error("The selected day is not available.\nPlease select another day");
+        }
         }
     }
     return startDate;

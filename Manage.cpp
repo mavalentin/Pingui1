@@ -405,3 +405,19 @@ void Manage::find()
     gui.list(event);
     // TODO: print all the events found in the list event  
 }
+
+
+bool Manage::checkAvailability(string date){
+    vector<Event*>::iterator it;
+    //bool available=true;
+    //iterates through list and sets available=true if an event on the same day is found
+    for (it=eventsList.begin(); it < eventsList.end(); it++)
+    {
+	    	if((date.compare((*it)->getStartDate()))==0)
+	    	{
+                    return false;
+	    	}
+   }
+    cout << "M: this is available" << endl;
+    return true;
+}

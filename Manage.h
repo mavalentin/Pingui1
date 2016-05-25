@@ -36,9 +36,10 @@ public:
     void removeEvent(string id);
     void clearList(vector<Event*> eventsList);
     void find();
+    bool checkAvailability(string date);
+    static vector<Event*> eventsList; //access objects with * and objectvariables with ->
     
 private:
-    vector<Event*> eventsList; //access objects with * and objectvariables with ->
     string name, description, startDate, endDate, location;
     string intToString(int i);
 };
