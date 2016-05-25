@@ -25,7 +25,7 @@ int main(int argc, char** argv) {
 
     gui.welcome();
     
-    const string COMMANDS[] = { "add", "update", "remove", "find", "print", "removeall", "showall", "help", "commands", "bye", "exit", "pingui", "hello"};
+    const string COMMANDS[] = { "add", "update", "remove", "find", "print", "removeall", "showall", "check", "help", "commands", "bye", "exit", "pingui", "hello"};
     const int NUM_COMMANDS = sizeof(COMMANDS)/sizeof(COMMANDS[0]);
 
     string user_input;
@@ -111,17 +111,18 @@ int main(int argc, char** argv) {
                 break;
             
             case 8:
+            case 9:
                 gui.help();
                 break;
             
-            case 9:            
-            case 10:
+            case 10:            
+            case 11:
                 gui.greetings();
                 return 0;
                 break;
             
-            case 11:
             case 12:
+            case 13:
                 gui.pingui();
                 break;
 
