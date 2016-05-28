@@ -36,6 +36,7 @@ void Manage::emptyFile(){
     file.open("database.dat", fstream::out | fstream::trunc);
     //Closes the file
     file.close();
+    
 }
 
 void Manage::clearList(vector<Event*> eventsList){
@@ -218,31 +219,31 @@ void Manage::setEventID(Event *e){
 void Manage::listenToData(string type){
     if (type=="meeting"){
         //NAME
-            name=l.listenLabel(type);
+            name=l.listenLabel(type, "new");
             cout << "" << endl;
             // If user inputs "abort", returns to the main menu
             if(name == "abort")
                     return ;
         //START DATE
-            startDate=l.listenStartDate(type);
+            startDate=l.listenStartDate(type, "new");
             cout << "" << endl;
             // If user inputs "abort", returns to the main menu
             if(startDate == "abort")
                     return ;
         //END DATE
-            endDate=l.listenEndDate(type); 
+            endDate=l.listenEndDate(type, "new"); 
             cout << "" << endl;
             // If user inputs "abort", returns to the main menu
             if(endDate == "abort")
                     return ;
         //DESCRIPTION
-            description=l.listenDescription(type);
+            description=l.listenDescription(type, "new");
             cout << "" << endl;
             // If user inputs "abort", returns to the main menu
             if(description == "abort")
                     return ;
         //LOCATION
-            location=l.listenLocation(type);  
+            location=l.listenLocation(type, "new");  
             cout << "" << endl;
             // If user inputs "abort", returns to the main menu
             if(location == "abort")
@@ -252,19 +253,19 @@ void Manage::listenToData(string type){
     }
     else if (type=="deadline"){
         //NAME
-            name=l.listenLabel(type);
+            name=l.listenLabel(type, "new");
             cout << "" << endl;
             // If user inputs "abort", returns to the main menu
             if(name == "abort")
                     return ;
         //START DATE
-            startDate=l.listenStartDate(type);
+            startDate=l.listenStartDate(type, "new");
             cout << "" << endl;
             // If user inputs "abort", returns to the main menu
             if(startDate == "abort")
                     return ;
         //DESCRIPTION
-            description=l.listenDescription(type);
+            description=l.listenDescription(type, "new");
             cout << "" << endl;
             // If user inputs "abort", returns to the main menu
             if(description == "abort")
@@ -349,6 +350,69 @@ void Manage::createNewEvent(string type){
 }
 
 
+void Manage::updateEvent(string id){
+    vector<Event*>::iterator it;
+    it=findWithID(id);
+    Event* e=*(it);
+    
+    //NAME
+    name=l.listenLabel("","update");
+    if(!name.empty()){
+      e->setLabel(name);  
+    }
+    
+    
+    //STARTDATE
+    startDate=l.listenStartDate("","update");
+    if(!startDate.empty()){
+        e->setStartDate(startDate);
+    }
+    
+    //ENDDATE
+    if (MeetingEvent* m = dynamic_cast<MeetingEvent*>(e)){
+        endDate=l.listenEndDate("", "update");
+        if(!endDate.empty()){
+            m->setEndDate(endDate);
+        }
+    }
+    
+    //LOCATION
+    if (MeetingEvent* m = dynamic_cast<MeetingEvent*>(e)){
+        location=l.listenLocation("", "update");
+        if(!location.empty()){
+            m->setLocation(location);
+        }
+    }
+    
+    //DESCRIPTION
+    description=l.listenDescription("", "update");
+    if(!description.empty()){
+        e->setDesc(description);
+    }
+    
+    
+    //update file
+    updateFile();
+    
+}
+
+vector<Event*>::iterator Manage::findWithID(string id){
+    vector<Event*>::iterator it;
+    Event* e;
+    for (it=eventsList.begin(); it < eventsList.end(); it++)
+    {
+        //transform id to string
+        stringstream sstm;
+        sstm << (*it)->getID();
+    	// Check if the ID of the actual event corresponds to the ID of the event to remove. If yes, remove it and set to true the boolean variable removed
+	    	if((id.compare(sstm.str()))==0)
+	    	{
+                    return it;
+	    	}    
+   }
+    return it;
+}
+
 
 
 void Manage::removeEvent(string id)
@@ -358,27 +422,13 @@ void Manage::removeEvent(string id)
 //	string id;
 //  getline(cin, id);
 
-    bool removed = false;
     vector<Event*>::iterator it;
-    for (it=eventsList.begin(); it < eventsList.end(); it++)
-    {
-        //transform id to string
-        stringstream sstm;
-        sstm << (*it)->getID();
-    	// If set to true, then it means that an event has been removed and all the IDs have to be shifted by one before
-    	if(removed){
-    		//(*it)->setID((*it)->getID()-1);
-        }
-    	else
+    it=findWithID(id);
 	    	// Check if the ID of the actual event corresponds to the ID of the event to remove. If yes, remove it and set to true the boolean variable removed
-	    	if((id.compare(sstm.str()))==0)
-	    	{
-                        Event* e=*(it);
-                        eventsList.erase(it);
-                        delete e;
-	    		removed = true;
-	    	}    
-   }
+	    	Event* e=*(it);
+                eventsList.erase(it);
+                delete e;
+   
     //update database file
     updateFile();
 }

@@ -31,12 +31,14 @@ public:
     template<typename T> string constructDataString(T* event);
     void updateFile();
     void createNewEvent(string type);
+    void updateEvent(string id);
     void setEventID(Event *e);
     void listenToData(string type);
     void removeEvent(string id);
     void clearList(vector<Event*> eventsList);
     void find();
     bool checkAvailability(string date);
+    vector<Event*>::iterator findWithID(string id);
     static vector<Event*> eventsList; //access objects with * and objectvariables with ->
     
 private:
