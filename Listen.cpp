@@ -149,6 +149,7 @@ void Listen::removeAll()
     if(command == "Y" || command == "y")
     {
         m.emptyFile();
+        m.readAllFromFile();
     }
     else
         gui.warn("Aborted remove all");

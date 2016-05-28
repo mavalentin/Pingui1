@@ -71,7 +71,8 @@ void Manage::readAllFromFile() {
         
         //DELETION OF OLD OBJECTS
         //empty the vecor list and recreate events from read file
-        clearList(eventsList);
+        //clearList(eventsList);
+        eventsList.clear();
         
         //RECREATION OF OBJECTS
 	//Checks if file has been opened
