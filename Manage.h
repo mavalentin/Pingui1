@@ -17,6 +17,8 @@
 #include "DeadlineEvent.h"
 #include <sstream>
 #include <stdlib.h>
+#include <algorithm>
+
 using namespace std;
 
 class Manage {
@@ -38,12 +40,14 @@ public:
     void clearList(vector<Event*> eventsList);
     void find();
     bool checkAvailability(string date);
+    int getEventIndex(Event* e);
     vector<Event*>::iterator findWithID(string id);
     static vector<Event*> eventsList; //access objects with * and objectvariables with ->
     
 private:
     string name, description, startDate, endDate, location;
     string intToString(int i);
+    int stringToInt(string s);
 };
 
 #endif	/* MANAGE_H */

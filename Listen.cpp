@@ -53,6 +53,7 @@ string Listen::listenStartDate(string type, string action){
                 gui.error("A date and time is required");
             }
             else{
+                
             available=m.checkAvailability(startDate);
             if (available==true){
                 }

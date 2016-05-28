@@ -6,12 +6,15 @@
  */
  
 #include "./GUI.h"
+#include "./Manage.h"
 
 // Predefined string used as appendix of the program outputs, to make it clean and more readable
 const string atext = "   °°° ";
 const string atextQ = "  ?°°° ";
 const string atextE = "  !°°° ";
 const string endl2 = "\n\n       ";
+
+Manage m;
 
 GUI::GUI() {}
 
@@ -60,7 +63,7 @@ void GUI::list(vector<Event*> eventsList){
 
     for (size_t i = 0; i < eventsList.size(); i++){
         
-        cout << atext << "  " << eventsList[i]->getID() << " |  " << eventsList[i]->getStartDate() << " | " << eventsList[i]->getLabel() << endl;
+        cout << atext << "  " << /*eventsList[i]->getID()*/m.getEventIndex(eventsList[i]) << " |  " << eventsList[i]->getStartDate() << " | " << eventsList[i]->getLabel() << endl;
 
     }
 

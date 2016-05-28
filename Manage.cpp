@@ -85,35 +85,35 @@ void Manage::readAllFromFile() {
                 while(getline(file, line)){
 		
                     
-                    //if meeting found, get its 6 pieces of data
+                    //if meeting found, get its 5 pieces of data
                     if(line.find("/|\\MEETING/|\\")!=string::npos){
                         tempmeeting = new MeetingEvent;
-                        for (int index=1; index<=6; index++){
+                        for (int index=1; index<=5; index++){
                             getline(file, line);
                             
                             switch (index)
                             {
-                                case (1):
+                                /*case (1):
                                     tempmeeting->setID(atoi(line.c_str()));
-                                    break;
+                                    break;*/
                                     
-                                case (2):
+                                case (1):
                                     tempmeeting->setLabel(line);
                                     break;
                                     
-                                case (3):
+                                case (2):
                                     tempmeeting->setDesc(line);
                                     break;
                                     
-                                case (4):
+                                case (3):
                                     tempmeeting->setStartDate(line);
                                     break;
                                     
-                                case (5):
+                                case (4):
                                     tempmeeting->setEndDate(line);
                                     break;
                                     
-                                case (6):
+                                case (5):
                                     tempmeeting->setLocation(line);
                             }
                         }
@@ -121,7 +121,7 @@ void Manage::readAllFromFile() {
                         eventsList.push_back(newevent);
                     }
                     
-                    //if deadline found, get its 4 pieces of data
+                    //if deadline found, get its 3 pieces of data
                     else if(line.find("/|\\DEADLINE/|\\")!=string::npos){
                         tempdeadline=new DeadlineEvent;
                         for (int index=1; index<=4; index++){
@@ -129,19 +129,19 @@ void Manage::readAllFromFile() {
                             
                             switch (index)
                             {
-                                case (1):
+                                /*case (1):
                                     tempdeadline->setID(atoi(line.c_str()));
-                                    break;
+                                    break;*/
                                     
-                                case (2):
+                                case (1):
                                     tempdeadline->setLabel(line);
                                     break;
                                     
-                                case (3):
+                                case (2):
                                     tempdeadline->setDesc(line);
                                     break;
                                     
-                                case (4):
+                                case (3):
                                     tempdeadline->setStartDate(line);
                                     break;
                                     
@@ -168,13 +168,18 @@ void Manage::readAllFromFile() {
 }
 
 string Manage::intToString(int i){
+    //convert integer to string
     stringstream sstm;
     sstm << i;
     return sstm.str();
 }
 
+int Manage::stringToInt(string s){
+    return atoi(s.c_str());
+}
+
 template<typename T> string Manage::constructDataString(T* event){
-    string dataString = intToString(event->getID())+"\n"+event->getLabel()+"\n"+event->getDesc()+"\n"+event->getStartDate()+"\n";
+    string dataString = /*intToString(event->getID())+"\n"+*/event->getLabel()+"\n"+event->getDesc()+"\n"+event->getStartDate()+"\n";
     
     //add meeting-specific data to string
     if (MeetingEvent* m = dynamic_cast<MeetingEvent*>(event)){
@@ -205,7 +210,7 @@ void Manage::updateFile(){
 }
 
 
-void Manage::setEventID(Event *e){
+/*void Manage::setEventID(Event *e){
     //if list is empty set ID=0, or else add 1 to the ID of the last object
     if (eventsList.empty()){
         e->setID(0);
@@ -214,7 +219,7 @@ void Manage::setEventID(Event *e){
         int lastID=eventsList.back()->getID();
         e->setID(lastID+1);
     }
-}
+}*/
 
 
 
@@ -301,8 +306,8 @@ void Manage::createNewEvent(string type){
             event->setDesc(description);
             event->setLocation(location);
 
-            //ID
-            setEventID(event);
+            /*//ID
+            setEventID(event);*/
             
             
             //insert event into the list
@@ -331,8 +336,8 @@ void Manage::createNewEvent(string type){
             event->setStartDate(startDate);
             event->setDesc(description);
 
-            //ID
-            setEventID(event);
+            /*//ID
+            setEventID(event);*/
             
             
             //insert event into the list
@@ -352,9 +357,9 @@ void Manage::createNewEvent(string type){
 
 
 void Manage::updateEvent(string id){
-    vector<Event*>::iterator it;
-    it=findWithID(id);
-    Event* e=*(it);
+    /*vector<Event*>::iterator it;
+    it=findWithID(id);*/
+    Event* e=eventsList[stringToInt(id)];
     
     //NAME
     name=l.listenLabel("","update");
@@ -397,7 +402,7 @@ void Manage::updateEvent(string id){
     
 }
 
-vector<Event*>::iterator Manage::findWithID(string id){
+/*vector<Event*>::iterator Manage::findWithID(string id){
     vector<Event*>::iterator it;
     Event* e;
     for (it=eventsList.begin(); it < eventsList.end(); it++)
@@ -412,7 +417,7 @@ vector<Event*>::iterator Manage::findWithID(string id){
 	    	}    
    }
     return it;
-}
+}*/
 
 
 
@@ -422,9 +427,10 @@ void Manage::removeEvent(string id)
 //	cout<<"Insert the ID of the event you want to delete"<<endl;
 //	string id;
 //  getline(cin, id);
-
-    vector<Event*>::iterator it;
-    it=findWithID(id);
+    int iid=stringToInt(id);
+    vector<Event*>::iterator it=eventsList.begin();
+    advance(it, iid);
+    //it=findWithID(id);
 	    	// Check if the ID of the actual event corresponds to the ID of the event to remove. If yes, remove it and set to true the boolean variable removed
 	    	Event* e=*(it);
                 eventsList.erase(it);
@@ -469,4 +475,12 @@ bool Manage::checkAvailability(string date){
 	    	}
    }
     return true;
+}
+
+int Manage::getEventIndex(Event* e){
+    int pos = std::find(eventsList.begin(), eventsList.end(), e)-eventsList.begin();
+    if (pos<eventsList.size()){
+        return pos;
+    }
+    else return -1;
 }
