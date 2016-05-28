@@ -68,7 +68,7 @@ int main(int argc, char** argv) {
                 break;
 
             case 1:
-                //gui.notify("You selected update");
+                l.updateEvent();
                 break;
             
             case 2:
