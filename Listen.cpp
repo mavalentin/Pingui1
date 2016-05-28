@@ -134,10 +134,22 @@ string Listen::listenLocation(string type, string action){
 
 void Listen::removeEvent()
 {
-    string dId;
-    gui.ask("Please enter the ID of the event to remove");
-    getline(cin,dId);
-    m.removeEvent(dId);
+    cout << "Todo: check input int only" << endl;
+    int iid=-1;
+    int size=m.eventsList.size();
+    while(iid<0 || iid>=size){
+        if(iid>=size){
+            gui.error("ID not found.");
+        }
+        gui.ask("Please enter the ID of the event to remove");
+        cin >> iid;
+        cin.ignore();
+        if(iid<0){
+            gui.error("ID not found.");
+        }
+    }
+    
+    m.removeEvent(iid);
 }
 
 void Listen::removeAll()

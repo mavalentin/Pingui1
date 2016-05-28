@@ -124,7 +124,7 @@ void Manage::readAllFromFile() {
                     //if deadline found, get its 3 pieces of data
                     else if(line.find("/|\\DEADLINE/|\\")!=string::npos){
                         tempdeadline=new DeadlineEvent;
-                        for (int index=1; index<=4; index++){
+                        for (int index=1; index<=3; index++){
                             getline(file, line);
                             
                             switch (index)
@@ -421,15 +421,15 @@ void Manage::updateEvent(string id){
 
 
 
-void Manage::removeEvent(string id)
+void Manage::removeEvent(int id)
 {
 	// Uncomment this part in case the id is not passed as parameter, but asked from this method
 //	cout<<"Insert the ID of the event you want to delete"<<endl;
 //	string id;
 //  getline(cin, id);
-    int iid=stringToInt(id);
+    //int iid=stringToInt(id);
     vector<Event*>::iterator it=eventsList.begin();
-    advance(it, iid);
+    advance(it, id);
     //it=findWithID(id);
 	    	// Check if the ID of the actual event corresponds to the ID of the event to remove. If yes, remove it and set to true the boolean variable removed
 	    	Event* e=*(it);
