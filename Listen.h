@@ -18,14 +18,15 @@ class Listen
         Listen();
         Listen(const Listen& orig);
         virtual ~Listen();
-        string listenLabel(string type);
-        string listenStartDate(string type);
-        string listenEndDate(string type);
-        string listenDescription(string type);
-        string listenLocation(string type);
+        string listenLabel(string type, string action);
+        string listenStartDate(string type, string action);
+        string listenEndDate(string type, string action);
+        string listenDescription(string type, string action);
+        string listenLocation(string type, string action);
         void removeEvent();
         void removeAll();
         void addEvent();
+        void updateEvent();
     private:
         Manage m;
         GUI gui;
