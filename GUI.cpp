@@ -39,16 +39,16 @@ void GUI::greetings(){
 // Methods to print on the screen the message with the correct appendix
 // In order to highlight the type of message 
 void GUI::notify(string message){
-    cout << endl << atext << message << endl2;
+    cout << endl << atext << message << endl;
 }
 void GUI::ask(string question){
-    cout << endl << atextQ << question << endl2;
+    cout << endl << atextQ << question << endl;
 }
 void GUI::warn(string warning){
-    cout << endl << atextE << warning << endl2;
+    cout << endl << atextE << warning << endl;
 }
 void GUI::error(string e){
-    cout << endl << atextE << "Error: " << e << endl2;
+    cout << endl << atextE << "Error: " << e << endl;
 }
 
 

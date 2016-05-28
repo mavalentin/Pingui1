@@ -158,7 +158,8 @@ void Manage::readAllFromFile() {
 	}
 	else
 		gui.error("Impossible to open the file");
-        gui.notify("We found " + intToString(eventsList.size()) + " events in database and saved them to vector list.");
+        
+        gui.notify("Pingui found " + intToString(eventsList.size()) + " events");
         
         
         //how to extract an event from list and cast down: 
@@ -342,7 +343,6 @@ void Manage::createNewEvent(string type){
     }
     else
         gui.error("Invalid event type!");
-        gui.notify("Exiting the add option");
         
         
         //write to file
@@ -468,6 +468,5 @@ bool Manage::checkAvailability(string date){
                     return false;
 	    	}
    }
-    cout << "M: this is available" << endl;
     return true;
 }

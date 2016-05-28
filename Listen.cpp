@@ -55,10 +55,10 @@ string Listen::listenStartDate(string type, string action){
             else{
             available=m.checkAvailability(startDate);
             if (available==true){
-                cout << "L:this is available"<<endl;
                 }
             else {
-                gui.error("The selected day is not available.\nPlease select another day");
+                gui.error("The selected day is not available");
+                gui.error("Please select another day");
             }
             }
         }
