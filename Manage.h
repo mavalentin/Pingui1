@@ -34,7 +34,7 @@ public:
     void updateFile();
     void createNewEvent(string type);
     void updateEvent(string id);
-    void setEventID(Event *e);
+    //void setEventID(Event *e);
     void listenToData(string type);
     void removeEvent(int id);
     void clearList(vector<Event*> eventsList);
@@ -42,12 +42,12 @@ public:
     bool checkAvailability(string date);
     int getEventIndex(Event* e);
     int stringToInt(string s);
-    vector<Event*>::iterator findWithID(string id);
+    string intToString(int i);
+    //vector<Event*>::iterator findWithID(string id);
     static vector<Event*> eventsList; //access objects with * and objectvariables with ->
     
 private:
     string name, description, startDate, endDate, location;
-    string intToString(int i);
 };
 
 #endif	/* MANAGE_H */
