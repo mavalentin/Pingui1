@@ -453,9 +453,15 @@ void Manage::find()
     std::vector<Event*> event;
     for(it=eventsList.begin(); it < eventsList.end(); it++)
     {
+    	//Match name with substring
+    	if(((*it)->getLabel()).find(value_to_filter) != std::string::npos)
+    		event.push_back(*it);
+    		
+/*
         //cout << eventsList[1]->getLabel() << endl;
         if((*it)->getLabel() == value_to_filter)
-            event.push_back(*it);
+           event.push_back(*it);
+*/
     }
 
     gui.list(event);
