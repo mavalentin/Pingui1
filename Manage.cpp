@@ -508,12 +508,10 @@ void Manage::check(){
 }
 
 void Manage::print(){
-    vector<Event*> event;
     string id;
     
     gui.ask("Enter the ID of the event");
     getline(cin, id);
     
-    event.push_back(eventsList[atoi(id.c_str())]);
-    gui.list(event);
+    gui.print(eventsList[atoi(id.c_str())]);
 }

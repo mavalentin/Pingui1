@@ -71,6 +71,34 @@ void GUI::list(vector<Event*> eventsList){
 
 }
 
+// Print on the screen single event
+void GUI::print(Event* event){
+    cout << endl << "°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°" << endl << endl;
+    
+    //Print the event data based on the even type
+    if (MeetingEvent* meeting = dynamic_cast<MeetingEvent*>(event)){
+        cout << atext << "/|\\MEETING/|\\\n" << endl;
+        cout << atext << "ID: "<< m.getEventIndex(event) << endl;
+        cout << atext << "LABEL: "<< meeting->getLabel() << endl;
+        cout << atext << "START DATE: "<< meeting->getStartDate() << endl;
+        cout << atext << "END DATE: "<< meeting->getEndDate() << endl;
+        cout << atext << "LOCATION: "<< meeting->getLocation() << endl;
+        cout << atext << "DESCRIPTION: "<< meeting->getDesc() << endl;
+    }
+    
+    else if (DeadlineEvent* deadline = dynamic_cast<DeadlineEvent*>(event)){
+        cout << atext << "/|\\DEADLINE/|\\\n" << endl;
+        cout << atext << "ID: "<< m.getEventIndex(event) << endl;
+        cout << atext << "LABEL: "<< deadline->getLabel() << endl;
+        cout << atext << "DATE: "<< deadline->getStartDate() << endl;
+        cout << atext << "DESCRIPTION: "<< deadline->getDesc() << endl; 
+    }
+
+
+    cout << endl << "°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°" << endl2;
+
+}
+
 
 // Method called in the main when a command is finished and the program is ready to listen one
 void GUI::waitingNextCommand(){

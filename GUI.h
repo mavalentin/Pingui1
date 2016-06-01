@@ -21,6 +21,7 @@ class GUI {
     	GUI();
         virtual ~GUI();
         void list(vector<Event*> eventsList);
+        void print(Event* event);
         void error(string e);
         void invalidCommand();
         void notify(string message);
