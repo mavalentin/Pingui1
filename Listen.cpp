@@ -46,7 +46,7 @@ string Listen::listenStartDate(string type, string action){
     bool available;
     if(action=="new"){
         while (available==false || startDate.empty()){
-            gui.ask("Insert the date and time of the "+type);
+            gui.ask("Insert the date and time of the "+type+" (dd/mm/yyyy)");
             getline(cin, startDate);
 
             if (startDate.empty()){
@@ -87,7 +87,7 @@ string Listen::listenEndDate(string type, string action){
     string endDate;
     if(action=="new"){
         while (endDate.empty()){
-            gui.ask("Insert the ending date and time of the "+type);
+            gui.ask("Insert the ending date and time of the "+type+" (dd/mm/yyyy)");
             getline(cin, endDate);
             if (endDate.empty()){
                 gui.error("An end date is required");
@@ -163,10 +163,15 @@ void Listen::updateEvent(){
     string user_input;
     gui.ask("Enter the ID of the event to update");
     getline(cin,user_input);
+    
+    //check for abort
+    if (user_input=="abort")
+        return;
+    
     m.updateEvent(user_input);
 }
 
-int Listen::listenForID(){
+string Listen::listenForID(){
     string id;
     int iid=-1;
     int pos=-2;
@@ -178,6 +183,11 @@ int Listen::listenForID(){
         gui.ask("Please enter the ID of the event");
         
         getline(cin, id);
+        
+        //check for abort
+        if (id=="abort")
+            return id;
+        
         iid=atoi(id.c_str());
         pos=id.find_last_of("0123456789");
         
@@ -190,5 +200,5 @@ int Listen::listenForID(){
         }
     }
     
-    return iid;
+    return id;
 }

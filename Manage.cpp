@@ -346,9 +346,13 @@ void Manage::createNewEvent(string type){
             dataToWrite=constructDataString(event);
             
     }
+    //check for abort
+    else if (type=="abort")
+        return;
+    
     else
         gui.error("Invalid event type!");
-        
+        return;
         
         //write to file
         appendToFile(dataToWrite);
@@ -425,7 +429,13 @@ void Manage::updateEvent(string id){
 void Manage::removeEvent()
 {
     //get a valid id from user
-    int id=l.listenForID();
+    string sid=l.listenForID();
+    
+    //check for abort
+    if (sid=="abort")
+        return;
+    
+    int id=atoi(sid.c_str());
     
     vector<Event*>::iterator it=eventsList.begin();
     advance(it, id);
@@ -494,8 +504,13 @@ int Manage::getEventIndex(Event* e){
 void Manage::check(){
     string date;
     
-    gui.ask("Enter the date to check");
+    gui.ask("Enter the date to check (dd/mm/yyy)");
     getline(cin, date);
+    
+    //check for abort
+    if (date=="abort")
+        return;
+    
     bool av=checkAvailability(date);
                 if(av==false){
                     gui.error("This date is not available");
@@ -506,6 +521,12 @@ void Manage::check(){
 }
 
 void Manage::print(){
-    int id=l.listenForID();
+    string sid=l.listenForID();
+    
+    //check for abort
+    if (sid=="abort")
+        return;
+    
+    int id=atoi(sid.c_str());
     gui.print(eventsList[id]);
 }
