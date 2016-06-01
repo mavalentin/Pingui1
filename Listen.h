@@ -25,7 +25,7 @@ class Listen
         string listenEndDate(string type, string action);
         string listenDescription(string type, string action);
         string listenLocation(string type, string action);
-        void removeEvent();
+        int listenForID();
         void removeAll();
         void addEvent();
         void updateEvent();

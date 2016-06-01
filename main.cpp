@@ -71,7 +71,7 @@ int main(int argc, char** argv) {
                 break;
             
             case 2:
-                l.removeEvent();
+                m.removeEvent();
                 break;
             
             case 3:

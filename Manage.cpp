@@ -422,13 +422,11 @@ void Manage::updateEvent(string id){
 
 
 
-void Manage::removeEvent(int id)
+void Manage::removeEvent()
 {
-	// Uncomment this part in case the id is not passed as parameter, but asked from this method
-//	cout<<"Insert the ID of the event you want to delete"<<endl;
-//	string id;
-//  getline(cin, id);
-    //int iid=stringToInt(id);
+    //get a valid id from user
+    int id=l.listenForID();
+    
     vector<Event*>::iterator it=eventsList.begin();
     advance(it, id);
     //it=findWithID(id);
@@ -508,10 +506,6 @@ void Manage::check(){
 }
 
 void Manage::print(){
-    string id;
-    
-    gui.ask("Enter the ID of the event");
-    getline(cin, id);
-    
-    gui.print(eventsList[atoi(id.c_str())]);
+    int id=l.listenForID();
+    gui.print(eventsList[id]);
 }

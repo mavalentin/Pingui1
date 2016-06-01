@@ -131,33 +131,6 @@ string Listen::listenLocation(string type, string action){
     return location;
 }
 
-void Listen::removeEvent()
-{
-    string id;
-    int iid=-1;
-    int pos=-2;
-    int size=m.eventsList.size();
-    while(iid<0 || iid>=size || pos != id.size()-1){
-        if(iid>=size){
-            gui.error("ID not found.");
-        }
-        gui.ask("Please enter the ID of the event to remove");
-        
-        getline(cin, id);
-        iid=atoi(id.c_str());
-        pos=id.find_last_of("0123456789");
-        
-        if (pos != id.size()-1){
-            gui.error("Enter only integers");
-        }
-        
-        if(iid<0){
-            gui.error("ID not found.");
-        }
-    }
-    
-    m.removeEvent(iid);
-}
 
 void Listen::removeAll()
 {
@@ -191,4 +164,31 @@ void Listen::updateEvent(){
     gui.ask("Enter the ID of the event to update");
     getline(cin,user_input);
     m.updateEvent(user_input);
+}
+
+int Listen::listenForID(){
+    string id;
+    int iid=-1;
+    int pos=-2;
+    int size=m.eventsList.size();
+    while(iid<0 || iid>=size || pos != id.size()-1){
+        if(iid>=size){
+            gui.error("ID not found.");
+        }
+        gui.ask("Please enter the ID of the event");
+        
+        getline(cin, id);
+        iid=atoi(id.c_str());
+        pos=id.find_last_of("0123456789");
+        
+        if (pos != id.size()-1){
+            gui.error("Enter only integers");
+        }
+        
+        if(iid<0){
+            gui.error("ID not found.");
+        }
+    }
+    
+    return iid;
 }

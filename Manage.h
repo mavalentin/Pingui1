@@ -36,7 +36,7 @@ public:
     void updateEvent(string id);
     //void setEventID(Event *e);
     void listenToData(string type);
-    void removeEvent(int id);
+    void removeEvent();
     void clearList(vector<Event*> eventsList);
     void find();
     bool checkAvailability(string date);
