@@ -46,7 +46,7 @@ string Listen::listenStartDate(string type, string action){
     bool available;
     if(action=="new"){
         while (available==false || startDate.empty()){
-            gui.ask("Insert the date and time of the "+type+" (dd/mm/yyyy)");
+            gui.ask("Insert the date (and time) of the "+type+" (dd/mm/yyyy mm:hh)");
             getline(cin, startDate);
 
             if (startDate.empty()){
@@ -67,7 +67,7 @@ string Listen::listenStartDate(string type, string action){
     
     else if(action=="update"){
         while (available==false){
-            gui.ask("Enter the new date (empty for same)");
+            gui.ask("Enter the new date (and time), (dd/mm/yyyy mm:hh) (empty for same)");
             getline(cin, startDate);
 
             available=m.checkAvailability(startDate);
@@ -87,7 +87,7 @@ string Listen::listenEndDate(string type, string action){
     string endDate;
     if(action=="new"){
         while (endDate.empty()){
-            gui.ask("Insert the ending date and time of the "+type+" (dd/mm/yyyy)");
+            gui.ask("Insert the ending date (and time) of the "+type+" (dd/mm/yyyy mm:hh)");
             getline(cin, endDate);
             if (endDate.empty()){
                 gui.error("An end date is required");
@@ -96,7 +96,7 @@ string Listen::listenEndDate(string type, string action){
     }
     
     else if (action=="update"){
-        gui.ask("Enter the new end date (empty for same)");
+        gui.ask("Enter the new end date (and time), (dd/mm/yyyy mm:hh) (empty for same)");
         getline(cin, endDate);
     }
     return endDate;
