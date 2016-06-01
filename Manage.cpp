@@ -350,9 +350,10 @@ void Manage::createNewEvent(string type){
     else if (type=="abort")
         return;
     
-    else
+    else {
         gui.error("Invalid event type!");
         return;
+    }
         
         //write to file
         appendToFile(dataToWrite);
