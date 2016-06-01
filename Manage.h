@@ -43,6 +43,8 @@ public:
     int getEventIndex(Event* e);
     int stringToInt(string s);
     string intToString(int i);
+    void check();
+    void print();
     //vector<Event*>::iterator findWithID(string id);
     static vector<Event*> eventsList; //access objects with * and objectvariables with ->
     

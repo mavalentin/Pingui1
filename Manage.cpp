@@ -352,6 +352,7 @@ void Manage::createNewEvent(string type){
         
         //write to file
         appendToFile(dataToWrite);
+        gui.notify(("The event has been saved"));
     
 }
 
@@ -399,7 +400,7 @@ void Manage::updateEvent(string id){
     
     //update file
     updateFile();
-    
+    gui.notify(("The event has been updated"));
 }
 
 /*vector<Event*>::iterator Manage::findWithID(string id){
@@ -438,6 +439,7 @@ void Manage::removeEvent(int id)
    
     //update database file
     updateFile();
+    gui.notify("The event has been removed");
 }
 
 
@@ -489,4 +491,29 @@ int Manage::getEventIndex(Event* e){
         return pos;
     }
     else return -1;
+}
+
+void Manage::check(){
+    string date;
+    
+    gui.ask("Enter the date to check");
+    getline(cin, date);
+    bool av=checkAvailability(date);
+                if(av==false){
+                    gui.error("This date is not available");
+                }
+                if(av==true){
+                    gui.notify("This date is available");
+                }
+}
+
+void Manage::print(){
+    vector<Event*> event;
+    string id;
+    
+    gui.ask("Enter the ID of the event");
+    getline(cin, id);
+    
+    event.push_back(eventsList[atoi(id.c_str())]);
+    gui.list(event);
 }

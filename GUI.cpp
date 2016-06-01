@@ -45,13 +45,13 @@ void GUI::notify(string message){
     cout << endl << atext << message << endl;
 }
 void GUI::ask(string question){
-    cout << endl << atextQ << question << endl;
+    cout << endl << atextQ << question << ": ";
 }
 void GUI::warn(string warning){
     cout << endl << atextE << warning << endl;
 }
 void GUI::error(string e){
-    cout << endl << atextE << "Error: " << e << endl;
+    cout << endl << atextE << "ERROR: " << e << endl;
 }
 
 

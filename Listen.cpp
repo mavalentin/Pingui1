@@ -72,7 +72,6 @@ string Listen::listenStartDate(string type, string action){
 
             available=m.checkAvailability(startDate);
             if (available==true){
-                cout << "L:this is available"<<endl;
                 }
             else {
                 gui.error("The selected day is not available.\nPlease select another day");
@@ -134,7 +133,6 @@ string Listen::listenLocation(string type, string action){
 
 void Listen::removeEvent()
 {
-    cout << "Todo: check input int only" << endl;
     int iid=-1;
     int size=m.eventsList.size();
     while(iid<0 || iid>=size){
@@ -162,10 +160,13 @@ void Listen::removeAll()
     if(command == "Y" || command == "y")
     {
         m.emptyFile();
+        
+        gui.notify("All events have been removed");
         m.readAllFromFile();
     }
     else
         gui.warn("Aborted remove all");
+    
 }
 
 void Listen::addEvent()
