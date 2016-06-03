@@ -4,9 +4,9 @@
  * 	Project name: Pingui
  *	Goal: Simple command based todo-list, for saving, removing and updating appointments 
  */
- 
+
 #ifndef MANAGE_H
-#define	MANAGE_H
+#define MANAGE_H
 #include <iostream>
 #include <fstream>
 #include <string>
@@ -47,10 +47,10 @@ public:
     void print();
     //vector<Event*>::iterator findWithID(string id);
     static vector<Event*> eventsList; //access objects with * and objectvariables with ->
-    
+
 private:
     string name, description, startDate, endDate, location;
 };
 
-#endif	/* MANAGE_H */
+#endif /* MANAGE_H */
 

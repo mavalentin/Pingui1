@@ -6,27 +6,27 @@
  */
 
 #ifndef DEADLINEEVENT_H
-#define	DEADLINEEVENT_H
+#define DEADLINEEVENT_H
 
 #include <iostream>
 #include "./Event.h"
 using namespace std;
 
-class DeadlineEvent: public Event {
+class DeadlineEvent : public Event {
 public:
     DeadlineEvent();
     virtual ~DeadlineEvent();
 
     //For now we have the time already together with the date
-    
-    
+
+
     //void setTime(string date1);
     //string getTime();
 
 private:
-	// Temporary we work with time as a string (without any format check)
-	//string timex;
+    // Temporary we work with time as a string (without any format check)
+    //string timex;
 };
 
-#endif	/* DEADLINEEVENT_H */
+#endif /* DEADLINEEVENT_H */
 

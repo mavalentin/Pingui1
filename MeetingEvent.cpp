@@ -4,30 +4,30 @@
  * 	Project name: Pingui
  *	Goal: Simple command based todo-list, for saving, removing and updating appointments 
  */
- 
+
 #include "MeetingEvent.h"
 
 MeetingEvent::MeetingEvent() {
-    //gui.notify("creating meetingevent object");
 }
 
 MeetingEvent::MeetingEvent(const MeetingEvent& orig) {
 }
 
 MeetingEvent::~MeetingEvent() {
-    //gui.notify("destroying meetingevent object");
 }
 
 void MeetingEvent::setLocation(string l) {
-        location=l;
+    location = l;
 }
+
 string MeetingEvent::getLocation() {
-        return location;
+    return location;
 }
 
 void MeetingEvent::setEndDate(string d) {
-        endDate=d;
+    endDate = d;
 }
+
 string MeetingEvent::getEndDate() {
-        return endDate;
+    return endDate;
 }

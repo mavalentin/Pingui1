@@ -8,19 +8,7 @@
 #include "DeadlineEvent.h"
 
 DeadlineEvent::DeadlineEvent() {
-    //gui.notify("creating deadlineevent object");
 }
 
 DeadlineEvent::~DeadlineEvent() {
-    //gui.notify("destroying deadlineevent object");
 }
-
-
-
-/*
-void DeadlineEvent::setTime(string t) {
-        timex=t;
-}
-string DeadlineEvent::getTime() {
-        return timex;
-}*/

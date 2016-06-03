@@ -23,17 +23,17 @@ int main(int argc, char** argv) {
     GUI gui;
 
     gui.welcome();
-    
-    const string COMMANDS[] = { "add", "update", "remove", "find", "print", "removeall", "showall", "check", "help", "commands", "bye", "exit", "pingui", "hello"};
-    const int NUM_COMMANDS = sizeof(COMMANDS)/sizeof(COMMANDS[0]);
+
+    const string COMMANDS[] = {"add", "update", "remove", "find", "print", "removeall", "showall", "check", "help", "commands", "bye", "exit", "pingui", "hello"};
+    const int NUM_COMMANDS = sizeof (COMMANDS) / sizeof (COMMANDS[0]);
 
     string user_input;
     int command, i;
 
+    //Read file and import events in program memory
     m.readAllFromFile();
-    
-    while(1)
-	{
+
+    while (1) {
 
         // Get the line inputs
         getline(cin, user_input);
@@ -42,11 +42,9 @@ int main(int argc, char** argv) {
         i = 0;
 
         // Loop through the command list
-        while (command == -1 && i < NUM_COMMANDS)
-        {
+        while (command == -1 && i < NUM_COMMANDS) {
             // Look for command in the user input
-            if ( COMMANDS[i] == user_input )
-            {
+            if (COMMANDS[i] == user_input) {
                 command = i;
             }
 
@@ -60,8 +58,7 @@ int main(int argc, char** argv) {
             i++;
         }
 
-        switch ( command )
-        {
+        switch (command) {
             case 0:
                 l.addEvent();
                 break;
@@ -69,43 +66,42 @@ int main(int argc, char** argv) {
             case 1:
                 l.updateEvent();
                 break;
-            
+
             case 2:
                 m.removeEvent();
                 break;
-            
+
             case 3:
-                //gui.notify("You selected filter");
                 m.find();
                 break;
-            
+
             case 4:
                 m.print();
                 break;
-            
+
             case 5:
                 l.removeAll();
                 break;
-            
+
             case 6:
                 m.showAllEvents();
                 break;
-            
+
             case 7:
                 m.check();
                 break;
-            
+
             case 8:
             case 9:
                 gui.help();
                 break;
-            
-            case 10:            
+
+            case 10:
             case 11:
                 gui.greetings();
                 return 0;
                 break;
-            
+
             case 12:
             case 13:
                 gui.pingui();

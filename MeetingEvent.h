@@ -6,14 +6,14 @@
  */
 
 #ifndef MEETINGEVENT_H
-#define	MEETINGEVENT_H
+#define MEETINGEVENT_H
 
 #include <iostream>
 #include "./Event.h"
 
 using namespace std;
 
-class MeetingEvent: public Event {
+class MeetingEvent : public Event {
 public:
     MeetingEvent();
     MeetingEvent(const MeetingEvent& orig);
@@ -24,10 +24,10 @@ public:
     void setLocation(string date1);
     string getLocation();
 private:
-	// Temporary we work with date as string (without any check)
-	string endDate;
-	string location;
+    // Temporary we work with date as string (without any check)
+    string endDate;
+    string location;
 };
 
-#endif	/* MEETINGEVENT_H */
+#endif /* MEETINGEVENT_H */
 
