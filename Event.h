@@ -14,11 +14,9 @@ using namespace std;
 class Event {
 private:
     string label, description;
-    //time_t date;
     // Temporary we work with time as a string (without any check)
     string startDate;
-    //int id;
-
+    
 public:
     Event();
     virtual ~Event();
@@ -29,9 +27,6 @@ public:
     string getLabel();
     void setDesc(string desc1);
     string getDesc();
-    /*void setID(int i);
-    int getID();*/
 };
 
 #endif /* EVENT_H */
-

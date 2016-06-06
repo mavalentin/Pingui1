@@ -349,6 +349,9 @@ void Manage::updateEvent(string id) {
 
     //NAME
     name = l.listenLabel("", "update");
+    // If user inputs "abort", returns to the main menu
+    if (name == "abort")
+        return;
     if (!name.empty()) {
         e->setLabel(name);
     }
@@ -356,6 +359,9 @@ void Manage::updateEvent(string id) {
 
     //STARTDATE
     startDate = l.listenStartDate("", "update");
+    // If user inputs "abort", returns to the main menu
+    if (startDate == "abort")
+        return;
     if (!startDate.empty()) {
         e->setStartDate(startDate);
     }
@@ -364,6 +370,9 @@ void Manage::updateEvent(string id) {
     //Only in case of a meeting
     if (MeetingEvent * m = dynamic_cast<MeetingEvent*> (e)) {
         endDate = l.listenEndDate("", "update");
+        // If user inputs "abort", returns to the main menu
+        if (endDate == "abort")
+            return;
         if (!endDate.empty()) {
             m->setEndDate(endDate);
         }
@@ -373,6 +382,9 @@ void Manage::updateEvent(string id) {
     //Only in case of a meeting
     if (MeetingEvent * m = dynamic_cast<MeetingEvent*> (e)) {
         location = l.listenLocation("", "update");
+        // If user inputs "abort", returns to the main menu
+        if (location == "abort")
+            return;
         if (!location.empty()) {
             m->setLocation(location);
         }
@@ -380,6 +392,9 @@ void Manage::updateEvent(string id) {
 
     //DESCRIPTION
     description = l.listenDescription("", "update");
+    // If user inputs "abort", returns to the main menu
+    if (description == "abort")
+        return;
     if (!description.empty()) {
         e->setDesc(description);
     }
@@ -387,7 +402,7 @@ void Manage::updateEvent(string id) {
 
     //update file
     updateFile();
-    gui.notify(("The event has been updated"));
+    gui.notify("The event has been updated");
 }
 
 

@@ -9,7 +9,3 @@ Valentin Manuel <br />
 
 Free University of Bolzano, Computer Science and Engineering <br />
 Software Engineering spring-2016
-
-
-
-

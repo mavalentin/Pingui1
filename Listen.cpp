@@ -77,8 +77,6 @@ string Listen::listenStartDate(string type, string action) {
             }
         }
     }
-
-
     return startDate;
 }
 
@@ -172,8 +170,7 @@ void Listen::addEvent() {
 
 void Listen::updateEvent() {
     string user_input;
-    gui.ask("Enter the ID of the event to update");
-    getline(cin, user_input);
+    user_input = listenForID();
 
     //check for abort
     if (user_input == "abort")
@@ -200,8 +197,8 @@ string Listen::listenForID() {
         getline(cin, id);
 
         //check for abort
-        if (id == "abort")
-            return id;
+        if (id == "abort" || id.empty())
+            return "abort";
 
         //check id for validity and existence
         iid = atoi(id.c_str());

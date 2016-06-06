@@ -33,7 +33,7 @@ int main(int argc, char** argv) {
     //Read file and import events in program memory
     m.readAllFromFile();
 
-    while (1) {
+    while (true) {
 
         // Get the line inputs
         getline(cin, user_input);
@@ -47,13 +47,6 @@ int main(int argc, char** argv) {
             if (COMMANDS[i] == user_input) {
                 command = i;
             }
-
-            /*
-            // Check if the word is close to the user input
-            for (int n = 0; n != user_input.size(); n++)
-            {
-                //cout << user_input[n] << endl;
-            } */
 
             i++;
         }

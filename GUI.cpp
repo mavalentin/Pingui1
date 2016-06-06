@@ -23,10 +23,12 @@ GUI::~GUI() {
 
 void GUI::welcome() {
 
-    cout << endl << atext << "Welcome to PINGUI!" << endl2;
+    cout << endl << atext << "Welcome to PINGUI!";
 
     // Print 'Pingui' (the logo) on the screen
     pingui();
+
+    cout << endl << atext << "Type 'help' for the command list" << endl;
 
 }
 
@@ -44,19 +46,19 @@ void GUI::greetings() {
 // In order to highlight the type of message 
 
 void GUI::notify(string message) {
-    cout << endl << atext << message << endl;
+    cout << endl << atext << message << endl2;
 }
 
 void GUI::ask(string question) {
-    cout << endl << atextQ << question << ": ";
+    cout << endl << atextQ << question << endl2;
 }
 
 void GUI::warn(string warning) {
-    cout << endl << atextE << warning << endl;
+    cout << endl << atextE << warning << endl2;
 }
 
 void GUI::error(string e) {
-    cout << endl << atextE << "ERROR: " << e << endl;
+    cout << endl << atextE << "ERROR: " << e << endl2;
 }
 
 
@@ -137,6 +139,7 @@ void GUI::help() {
     cout << atext << "Print     -> 'print' to print all the present events." << endl;
     cout << atext << "Show all  -> 'showall' to print all the present events." << endl;
     cout << atext << "Check     -> 'check' to take a look at the events." << endl;
+    cout << atext << "Abort     -> 'abort' to interrupt the command." << endl;
     cout << atext << "Exit      -> 'exit' or 'bye' to log out from the application." << endl;
 
 }

@@ -45,8 +45,7 @@ public:
     string intToString(int i);
     void check();
     void print();
-    //vector<Event*>::iterator findWithID(string id);
-    static vector<Event*> eventsList; //access objects with * and objectvariables with ->
+    static vector<Event*> eventsList;
 
 private:
     string name, description, startDate, endDate, location;
